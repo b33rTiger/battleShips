@@ -29,7 +29,7 @@ var GameManager = function(){
 	this.newGame = function(){
 
 		$("#newgame").click(function(){
-			$(".gameCell").empty();
+			//$(".gameCell").empty();
 			boardSet.board = new Array();
 		})
 
