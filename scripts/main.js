@@ -15,7 +15,11 @@ function userInfo2(username,password){
 
 userInfo2.prototype = new userInfo;
 
-var 
+var boardSet = {
+
+	board: new Array()
+
+}
 
 var GameManager = function(){
 
@@ -25,6 +29,8 @@ var GameManager = function(){
 
 	this.newGame = function(){
 
+		//$(cellstuff).empty();
+		boardSet.board = new Array();
 	}
 
 };
