@@ -17,20 +17,24 @@ userInfo2.prototype = new userInfo;
 
 var boardSet = {
 
-	board: new Array()
+	board: new Array(),
 
 }
 
 var GameManager = function(){
 
 	this.init = function(){
-
+		// $('#cell-a1').append("testies");
+		this.newGame();
 	}
 
 	this.newGame = function(){
 
-		//$(cellstuff).empty();
-		boardSet.board = new Array();
+		$("#newgame").click(function(){
+			$(".gameCell").empty();
+			boardSet.board = new Array();		
+		})
+
 	}
 
 };
