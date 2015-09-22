@@ -18,8 +18,11 @@
 	<div id="container" class = "game-grid">
 		<h1>BATTLESHITS!!!</h1>
 		<!-- <div id="header">BattleShits</div> -->
-		<div class="btn" role="group">
+		<div class="btn" id="newgame-button" role="group">
 		  <button type="button" class="btn btn-default" id="newgame" data-toggle="modal" data-target="#userModal1">New Game</button>
+		</div>
+		<div class="btn" id="restart-button" role="group">
+		  <button type="button" class="btn btn-default" id="restart-game">Restart</button>
 		</div>
 		<div class="btn" role="group">
 		  <button type="button" class="btn btn-default" id="tutorial">Tutorial</button>
@@ -27,8 +30,13 @@
 		<div class="btn" role="group">
 		  <button type="button" class="btn btn-default" id="contact" data-toggle="modal" data-target="#contact-us">Contact</button>
 		</div>
+		<div class="ship-image">
+			<img src="images/smallship.png" />
+			<img src="images/mediumship.png" />
+		</div>
 		<div class = "row row0">
 			<div class="gameCell" id = "cell-a">A</div>
+			<img src="images/mediumship.png" />
 			<div class="gameCell" id = "cell-b">B</div>
 			<div class="gameCell" id = "cell-c">C</div>
 			<div class="gameCell" id = "cell-d">D</div>
@@ -37,6 +45,7 @@
 		<div class = "row row1">
 			<div class="gameCell" id = "cell-1">1</div>
 			<div class="gameCell" id = "cell-a1"><img src="./images/browndot.png"></div>
+			<img src="images/mediumship.png" />
 			<div class="gameCell" id = "cell-b1"><img src="./images/browndot.png"></div>
 			<div class="gameCell" id = "cell-c1"><img src="./images/browndot.png"></div>
 			<div class="gameCell" id = "cell-d1"><img src="./images/browndot.png"></div>
@@ -78,7 +87,7 @@
 
 	<!-- Modal -->
 
-	<!-- Tutorial/Help Modal -->
+	<!-- Username/Password (Player 1) Modal -->
 	<div class="modal fade" id="userModal1" tabindex="-1" role="dialog" 
 	     aria-labelledby="userModal1" aria-hidden="true">
 	    <div class="modal-dialog">
@@ -115,6 +124,45 @@
 	        </div>
 	    </div>
 	</div>
+
+	<!-- Username/Password (Player 2) Modal -->
+	<div class="modal fade" id="userModal2" tabindex="-1" role="dialog" 
+	     aria-labelledby="userModal2" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <!-- Modal Header -->
+	            <div class="modal-header">
+	                <button type="button" class="close" 
+	                   data-dismiss="modal">
+	                       <span aria-hidden="true">&times;</span>
+	                       <span class="sr-only">Close</span>
+	                </button>
+	                <h4 class="modal-title">
+	                    New Game
+	                </h4>
+	                <h5> Player 2, enter your username and password. *Warning: This password is stored in plain-text, so DO NOT use a password you use in other important accounts.</h5>
+	            </div>
+	            
+	            <!-- Modal Body -->
+	            <div class="modal-body">
+	                <form role="form">
+	                  <div class="form-group">
+	                    <label for="Username">Username</label>
+	                      <input type="username" class="form-control"
+	                      id="username2" placeholder="Enter username"/>
+	                  </div>
+	                  <div class="form-group">
+	                    <label for="Password">Password</label>
+	                      <input type="password" class="form-control"
+	                          id="password2" placeholder="Password"/>
+	                  </div>
+	                  <button class="btn btn-default" id="info-submit2">Submit</button>
+	                </form> 
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
 
 	<!-- Contact Modal -->
 	<div class="modal fade" id="contact-us" tabindex="-1" role="dialog" 

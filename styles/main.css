@@ -15,6 +15,16 @@
 	text-align: center;
 }
 
+/*.ship-image: hover{
+	opacity:0.9;
+	background:#000000;
+}*/
+
 .row0 {
 	padding-left: 2.5em;
+	overflow:visible;
+}
+
+.row1{
+	overflow:visible;
 }
