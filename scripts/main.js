@@ -71,6 +71,10 @@ var GameManager = function(){
 		this.userInfo2.username = username;
 		this.userInfo2.password = password;
 	}
+
+	this.shipDrop = function(e){
+		
+	}
 };
 
 var gameManager = new GameManager();

@@ -17,13 +17,12 @@
 <body>
 	<div class="container game-grid">
 		<h1>BATTLESHITS!!!</h1>
-<<<<<<< HEAD
 		<div class="row">
-			<div class="col-md-2">
+			<div draggable="true" class="col-md-2">
 				<img src="images/smallship.png"></img>
 				<img id="mediumShip" class="shipImage" src="images/mediumship.png"></img>
 			</div>
-			<div class="col-md-10">
+			<div class="col-md-7">
 				<div class="btn" role="group">
 				  <button type="button" class="btn btn-default" id="newgame" data-toggle="modal" data-target="#userModal1">New Game</button>
 				</div>
@@ -33,123 +32,66 @@
 				<div class="btn" role="group">
 				  <button type="button" class="btn btn-default" id="contact" data-toggle="modal" data-target="#contact-us">Contact</button>
 				</div>
-				<div class = "row row0">
-					<div class="gameCell" id = "cell-a">A</div>
-					<div class="gameCell" id = "cell-b">B</div>
-					<div class="gameCell" id = "cell-c">C</div>
-					<div class="gameCell" id = "cell-d">D</div>
-					<div class="gameCell" id = "cell-e">E</div>
-				</div>
-				<div class = "row row1">
-					<div class="gameCell" id = "cell-1">1</div>
-					<div class="gameCell" id = "cell-a1"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-b1"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-c1"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-d1"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-e1"><img src="./images/browndot.png"></div>
-				</div>
-				<div class = "row row2">
-					<div class="gameCell" id = "cell-2">2</div>
-					<div class="gameCell" id = "cell-a2"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-b2"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-c2"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-d2"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-e2"><img src="./images/browndot.png"></div>
-				</div>
-				<div class = "row row3">
-					<div class="gameCell" id = "cell-3">3</div>
-					<div class="gameCell" id = "cell-a3"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-b3"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-c3"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-d3"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-e3"><img src="./images/browndot.png"></div>
-				</div>
-				<div class = "row row4">
-					<div class="gameCell" id = "cell-4">4</div>
-					<div class="gameCell" id = "cell-a4"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-b4"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-c4"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-d4"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-e4"><img src="./images/browndot.png"></div>
-				</div>
-				<div class = "row row5">
-					<div class="gameCell" id = "cell-5">5</div>
-					<div class="gameCell" id = "cell-a5"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-b5"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-c5"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-d5"><img src="./images/browndot.png"></div>
-					<div class="gameCell" id = "cell-e5"><img src="./images/browndot.png"></div>
+				<div class="wrapper container-fluid">
+					<div class = "row row0">
+						<div class="grid-cord col-md-2">
+							<div class="gameCell inner-cord" id="cell-a">A</div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div class="gameCell inner-cord" id="cell-b">B</div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div class="gameCell inner-cord" id="cell-c">C</div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div class="gameCell inner-cord" id="cell-d">D</div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div class="gameCell inner-cord" id="cell-e">E</div>
+						</div>
+					</div>
+					<div class = "row row1">
+						<div class="gameCell" id = "cell-1">1</div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-a1"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-b1"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-c1"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-d1"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-e1"></div>
+					</div>
+					<div class = "row row2">
+						<div class="gameCell" id = "cell-2">2</div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-a2"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-b2"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-c2"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-d2"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-e2"></div>
+					</div>
+					<div class = "row row3">
+						<div class="gameCell" id = "cell-3">3</div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-a3"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-b3"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-c3"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-d3"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-e3"></div>
+					</div>
+					<div class = "row row4">
+						<div class="gameCell" id = "cell-4">4</div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-a4"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-b4"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-c4"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-d4"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-e4"></div>
+					</div>
+					<div class = "row row5">
+						<div class="gameCell" id = "cell-5">5</div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-a5"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-b5"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-c5"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-d5"></div>
+						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-e5"></div>
+					</div>
 				</div>
 			</div>
-=======
-		<!-- <div id="header">BattleShits</div> -->
-		<div class="btn" id="newgame-button" role="group">
-		  <button type="button" class="btn btn-default" id="newgame" data-toggle="modal" data-target="#userModal1">New Game</button>
-		</div>
-		<div class="btn" id="restart-button" role="group">
-		  <button type="button" class="btn btn-default" id="restart-game">Restart</button>
-		</div>
-		<div class="btn" role="group">
-		  <button type="button" class="btn btn-default" id="tutorial">Tutorial</button>
-		</div>
-		<div class="btn" role="group">
-		  <button type="button" class="btn btn-default" id="contact" data-toggle="modal" data-target="#contact-us">Contact</button>
-		</div>
-		<div class="ship-image">
-			<img src="images/smallship.png" />
-			<img src="images/mediumship.png" />
-		</div>
-		<div class = "row row0">
-			<div class="gameCell" id = "cell-a">A</div>
-			<img src="images/mediumship.png" />
-			<div class="gameCell" id = "cell-b">B</div>
-			<div class="gameCell" id = "cell-c">C</div>
-			<div class="gameCell" id = "cell-d">D</div>
-			<div class="gameCell" id = "cell-e">E</div>
-		</div>
-		<div class = "row row1">
-			<div class="gameCell" id = "cell-1">1</div>
-			<div class="gameCell" id = "cell-a1"><img src="./images/browndot.png"></div>
-			<img src="images/mediumship.png" />
-			<div class="gameCell" id = "cell-b1"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-c1"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-d1"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-e1"><img src="./images/browndot.png"></div>
-		</div>
-		<div class = "row row2">
-			<div class="gameCell" id = "cell-2">2</div>
-			<div class="gameCell" id = "cell-a2"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-b2"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-c2"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-d2"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-e2"><img src="./images/browndot.png"></div>
-		</div>
-		<div class = "row row3">
-			<div class="gameCell" id = "cell-3">3</div>
-			<div class="gameCell" id = "cell-a3"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-b3"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-c3"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-d3"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-e3"><img src="./images/browndot.png"></div>
-		</div>
-		<div class = "row row4">
-			<div class="gameCell" id = "cell-4">4</div>
-			<div class="gameCell" id = "cell-a4"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-b4"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-c4"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-d4"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-e4"><img src="./images/browndot.png"></div>
-		</div>
-		<div class = "row row5">
-			<div class="gameCell" id = "cell-5">5</div>
-			<div class="gameCell" id = "cell-a5"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-b5"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-c5"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-d5"><img src="./images/browndot.png"></div>
-			<div class="gameCell" id = "cell-e5"><img src="./images/browndot.png"></div>
->>>>>>> e97ae7290d3bffb6dc110df231b3216b7aa57cc5
-		</div>
-	</div>
 
 	<!-- Modal -->
 

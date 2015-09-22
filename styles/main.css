@@ -5,6 +5,24 @@
 	background-repeat: no-repeat;
 	text-align: center;
 	margin: auto;
+	border: 1px solid black;
+	/*background-size: 100%;*/
+}
+
+.grid-dot {
+	background-image:url("../images/browndot.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 0 3em 1em 1em;
+}
+
+.grid-cord {
+	text-align: center;
+	padding-top: 1em;
+}
+
+.inner-cord {
+	position: absolute;
 }
 
 /*.game-grid {
@@ -21,15 +39,12 @@
 }*/
 
 .row0 {
-	padding-left: 2.5em;
-<<<<<<< HEAD
-}
+	padding-left: 5.75em;
+	padding-right: 3em;
 
-=======
-	overflow:visible;
 }
 
 .row1{
 	overflow:visible;
 }
->>>>>>> e97ae7290d3bffb6dc110df231b3216b7aa57cc5
+
