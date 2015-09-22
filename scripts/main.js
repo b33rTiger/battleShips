@@ -7,8 +7,8 @@ function UserInfo(username,password){
 
 var boardSet = {
 
-	board: new Array(),
-
+	boardP1:[24],
+	boardTurnP1: [24]
 }
 
 var GameManager = function(){
@@ -46,15 +46,21 @@ var GameManager = function(){
 
 			$("#newgame-button").hide();
 			$("#restart-button").show();
+
+			// for (var i = 0; i < boardSet.boardP1.length; i++){
+			// 	$("#cell"+i).onClick = console.log("I'm potato " + i);
+			// }
 			
-		})
+		});
 	}
 
 	this.newGame = function(){
 
 		$("#newgame").click(function(){
 			
-			boardSet.board = new Array();
+			boardSet.boardP1 = new Array();
+			boardSet.boardTurnP1 = new Array();
+
 		});
 
 		this.userInfo1 = new UserInfo();
@@ -72,9 +78,10 @@ var GameManager = function(){
 		this.userInfo2.password = password;
 	}
 
-	this.shipDrop = function(e){
+	// this.shipDrop = function(e){
 		
-	}
+	// }
+
 };
 
 var gameManager = new GameManager();
