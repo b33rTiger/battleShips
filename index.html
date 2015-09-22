@@ -2,28 +2,30 @@
 <html>
 <head>
 	<title>Battle the Shits</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+ -->
+ 	<link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="styles/main.css">
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+	<script src="scripts/bootstrap/bootstrap.min.js"></script>
 </head>
 <body>
 	<div id="container" class = "game-grid">
 		<h1>BATTLESHITS!!!</h1>
 		<!-- <div id="header">BattleShits</div> -->
 		<div class="btn" role="group">
-		  <button type="button" class="btn btn-default" id="newgame">New Game</button>
+		  <button type="button" class="btn btn-default" id="newgame" data-toggle="modal" data-target="#userModal1">New Game</button>
 		</div>
 		<div class="btn" role="group">
-		  <button type="button" class="btn btn-default" id="tutorial" data-toggle="modal" data-target="#userModal1">Tutorial</button>
+		  <button type="button" class="btn btn-default" id="tutorial">Tutorial</button>
 		</div>
 		<div class="btn" role="group">
-		  <button type="button" class="btn btn-default" id="contact">Contact</button>
+		  <button type="button" class="btn btn-default" id="contact" data-toggle="modal" data-target="#contact-us">Contact</button>
 		</div>
 		<div class = "row row0">
 			<div class="gameCell" id = "cell-a">A</div>
@@ -75,6 +77,8 @@
 	</div>
 
 	<!-- Modal -->
+
+	<!-- Tutorial/Help Modal -->
 	<div class="modal fade" id="userModal1" tabindex="-1" role="dialog" 
 	     aria-labelledby="userModal1" aria-hidden="true">
 	    <div class="modal-dialog">
@@ -86,9 +90,10 @@
 	                       <span aria-hidden="true">&times;</span>
 	                       <span class="sr-only">Close</span>
 	                </button>
-	                <h4 class="modal-title" id="userModal1">
-	                    Tutorial/Help
+	                <h4 class="modal-title">
+	                    New Game
 	                </h4>
+	                <h5> Player 1, enter your username and password. *Warning: This password is stored in plain-text, so DO NOT use a password you use in other important accounts.</h5>
 	            </div>
 	            
 	            <!-- Modal Body -->
@@ -97,12 +102,49 @@
 	                  <div class="form-group">
 	                    <label for="Username">Username</label>
 	                      <input type="username" class="form-control"
-	                      id="Username" placeholder="Enter username"/>
+	                      id="username1" placeholder="Enter username"/>
 	                  </div>
 	                  <div class="form-group">
 	                    <label for="Password">Password</label>
 	                      <input type="password" class="form-control"
-	                          id="Password" placeholder="Password"/>
+	                          id="password1" placeholder="Password"/>
+	                  </div>
+	                  <button class="btn btn-default" id="info-submit1">Submit</button>
+	                </form> 
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<!-- Contact Modal -->
+	<div class="modal fade" id="contact-us" tabindex="-1" role="dialog" 
+	     aria-labelledby="contact-us" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <!-- Modal Header -->
+	            <div class="modal-header">
+	                <button type="button" class="close" 
+	                   data-dismiss="modal">
+	                       <span aria-hidden="true">&times;</span>
+	                       <span class="sr-only">Close</span>
+	                </button>
+	                <h4 class="modal-title">
+	                    Contact Us
+	                </h4>
+	            </div>
+	            
+	            <!-- Modal Body -->
+	            <div class="modal-body">
+	                <form role="form">
+	                  <div class="form-group">
+	                    <label for="Useremail">E-mail</label>
+	                      <input type="user-email" class="form-control"
+	                      id="user-email" placeholder="Enter email"/>
+	                  </div>
+	                  <div class="form-group">
+	                    <label for="contactName">Name</label>
+	                      <input type="contact-name" class="form-control"
+	                          id="contact-name" placeholder="Enter name"/>
 	                  </div>
 	                  <button type="submit" class="btn btn-default">Submit</button>
 	                </form> 
