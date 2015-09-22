@@ -3,14 +3,6 @@ function UserInfo(username,password){
 	this.password = password;
 }
 
-// function userInfo1(username,password){
-// 	this.base = userInfo;
-// }
-
-// function userInfo2(username,password){
-// 	this.base = userInfo;
-// }
-
 var boardSet = {
 
 	board: new Array(),
@@ -18,11 +10,9 @@ var boardSet = {
 }
 
 var GameManager = function(){
-	// this.userInfo1;
-	// this.userInfo2;
 
 	this.init = function(){
-		// $('#cell-a1').append("testies");
+		
 		this.newGame();
 		$("#info-submit1").on('click', function(e){
 			e.preventDefault();
@@ -31,12 +21,15 @@ var GameManager = function(){
 			var usePass1 = $("#password1").val();
 
 			gameManager.gameSetup1(useName1,usePass1);
-			//put close modal code here
-			//and clear form fields (prevent old username and password popping up in the next modal)
-			//submit button refreshes page
+			$('#userModal1').modal('hide')
+
+			//This prevents the previous user inputs from showing up when New Game is pressed again.
+			$('#userModal1').on('hidden.bs.modal', function(){
+			    $(this).find('form')[0].reset();
+			});
+			
 			
 		})
-		// this.gameSetup();
 	}
 
 	this.newGame = function(){
@@ -63,14 +56,3 @@ var GameManager = function(){
 
 var gameManager = new GameManager();
 gameManager.init();
-
-// $("#info-submit1").on('click', function(){
-// 			debugger
-// 			console.log("click ran");
-// 			var useName1 = $("#username1").val();
-// 			var usePass1 = $("#password1").val();
-
-// 			gameManager.gameSetup1(useName1,usePass1);
-
-			
-// 		})
