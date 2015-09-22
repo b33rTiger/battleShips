@@ -19,7 +19,7 @@
 		<h1>BATTLESHITS!!!</h1>
 		<div class="row">
 			<div draggable="true" class="col-md-2">
-				<img src="images/smallship.png"></img>
+				<img id="smallShip" class="shipImage" src="images/smallship.png"></img>
 				<img id="mediumShip" class="shipImage" src="images/mediumship.png"></img>
 			</div>
 			<div class="col-md-7">
@@ -33,8 +33,8 @@
 				  <button type="button" class="btn btn-default" id="contact" data-toggle="modal" data-target="#contact-us">Contact</button>
 				</div>
 				<div class="wrapper container-fluid">
-					<div class = "row row0">
-						<div class="grid-cord col-md-2">
+					<div class="row row0">
+						<div class="grid-cord col-md-2 col-md-offset-2">
 							<div class="gameCell inner-cord" id="cell-a">A</div>
 						</div>
 						<div class="grid-cord col-md-2">
@@ -50,45 +50,106 @@
 							<div class="gameCell inner-cord" id="cell-e">E</div>
 						</div>
 					</div>
-					<div class = "row row1">
-						<div class="gameCell" id = "cell-1">1</div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-a1"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-b1"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-c1"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-d1"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-e1"></div>
+					<div class="row row1">
+						<div class="grid-cord col-md-2">
+							<div class="gameCell" id = "cell-1">1</div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id="cell-a1"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id="cell-b1"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id="cell-c1"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id="cell-d1"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-e1"></div>
+						</div>
 					</div>
 					<div class = "row row2">
-						<div class="gameCell" id = "cell-2">2</div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-a2"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-b2"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-c2"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-d2"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-e2"></div>
+						<div class="grid-cord col-md-2">
+							<div class="gameCell" id = "cell-2">2</div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-a2"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-b2"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-c2"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-d2"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-e2"></div>
+						</div>
 					</div>
 					<div class = "row row3">
-						<div class="gameCell" id = "cell-3">3</div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-a3"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-b3"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-c3"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-d3"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-e3"></div>
+						<div class="grid-cord col-md-2">
+							<div class="gameCell" id = "cell-3">3</div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-a3"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-b3"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-c3"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-d3"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-e3"></div>
+						</div>
 					</div>
 					<div class = "row row4">
-						<div class="gameCell" id = "cell-4">4</div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-a4"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-b4"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-c4"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-d4"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-e4"></div>
+						<div class="grid-cord col-md-2">
+							<div class="gameCell" id = "cell-4">4</div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-a4"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-b4"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-c4"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-d4"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-e4"></div>
+						</div>
 					</div>
 					<div class = "row row5">
-						<div class="gameCell" id = "cell-5">5</div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-a5"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-b5"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-c5"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-d5"></div>
-						<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-e5"></div>
+						<div class="grid-cord col-md-2">
+							<div class="gameCell" id = "cell-5">5</div>
+						</div>
+
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-a5"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-b5"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-c5"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-d5"></div>
+						</div>
+						<div class="grid-cord col-md-2">
+							<div ondragover="return false" ondragover="event.preventDefault()" class="gameCell grid-dot" id = "cell-e5"></div>
+						</div>
 					</div>
 				</div>
 			</div>
