@@ -15,7 +15,21 @@
 	text-align: center;
 }
 
+/*.ship-image: hover{
+	opacity:0.9;
+	background:#000000;
+}*/
+
 .row0 {
 	padding-left: 2.5em;
+<<<<<<< HEAD
 }
 
+=======
+	overflow:visible;
+}
+
+.row1{
+	overflow:visible;
+}
+>>>>>>> e97ae7290d3bffb6dc110df231b3216b7aa57cc5
