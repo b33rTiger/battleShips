@@ -1,11 +1,8 @@
 .gameCell {
 	padding: 1em;
 	display: inline-block;
-	/*background-image: url("../images/browndot.png");*/
-	background-repeat: no-repeat;
 	text-align: center;
 	margin: auto;
-	/*background-size: 100%;*/
 }
 
 .grid-dot {
@@ -14,6 +11,7 @@
 	background-position: center;
 	padding: 2.6em 3em 1em 1em;
 	border: 1px solid black;
+	/*overflow:visible;*/
 }
 
 .grid-cord {
@@ -21,10 +19,6 @@
 	padding-top: 1em;
 	padding-bottom:1em;
 }
-
-/*.inner-cord {
-	padding-right:3em;
-}*/
 
 .game-grid {
 	padding-left: 5em;

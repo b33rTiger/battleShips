@@ -61,7 +61,6 @@ var GameManager = function(){
 			$("#restart-button").show();
 
 
-
 		});
 		
 	}
@@ -96,12 +95,21 @@ var GameManager = function(){
 		    var placeShip = this.id;
 		    placeShip = placeShip.substring(4);
 		    console.log(placeShip);
+		    placeShip = parseInt(placeShip);
 		    boardSet.boardP1.push(placeShip);
-		    // alert(event.target.id);
+
+			var size = 0;
+
+			$("input:checkbox[name=ship]:checked").each(function(){
+				size = $(this).val();
+
+				for(i=0;i<size;i++){
+					$("#cell"+placeShip).css("background-color:","brown");
+				}	
+			})
 		});
 
 	};
-
 	this.shipDrop();
 };
 
