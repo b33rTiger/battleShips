@@ -8,7 +8,9 @@ function UserInfo(username,password){
 var boardSet = {
 
 	boardP1:[24],
-	boardTurnP1: [24]
+	boardTurnP1: [24],
+	boardP2: [24],
+	boardTurnP2: [24]
 }
 
 var GameManager = function(){
@@ -16,6 +18,16 @@ var GameManager = function(){
 	this.init = function(){
 
 		this.newGame();
+
+		$("input:checkbox").click(function() {
+		if ($(this).is(":checked")) {
+		    var group = "input:checkbox[name='" + $(this).attr("name") + "']";
+		    $(group).prop("checked", false);
+		    $(this).prop("checked", true);
+		} else {
+		    $(this).prop("checked", false);
+		}
+		});
 		
 
 		$("#info-submit1").on('click', function(e){
@@ -79,16 +91,18 @@ var GameManager = function(){
 		this.userInfo2.password = password;
 	}
 
-	// this.shipDrop = function() {
-	// 	console.log("I am reached");
-	// 	$("div").click(function (event) {
-	// 	    var id = this.id;
-	// 	    alert(event.target.id);
-	// 	});
+	this.shipDrop = function() {
+		$(".grid-dot").click(function (event) {
+		    var placeShip = this.id;
+		    placeShip = placeShip.substring(4);
+		    console.log(placeShip);
+		    boardSet.boardP1.push(placeShip);
+		    // alert(event.target.id);
+		});
 
-	// };
+	};
 
-	// this.shipDrop();
+	this.shipDrop();
 };
 
 var gameManager = new GameManager();

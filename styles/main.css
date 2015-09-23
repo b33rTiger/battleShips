@@ -42,4 +42,7 @@
 	text-align: center;
 }
 
-
+.ship-wrap {
+	padding-right: 3em;
+	display: block;
+}
