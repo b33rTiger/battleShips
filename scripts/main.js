@@ -16,6 +16,7 @@ var GameManager = function(){
 	this.init = function(){
 
 		this.newGame();
+		// this.shipDrop();
 
 		$("#info-submit1").on('click', function(e){
 			e.preventDefault();
@@ -47,11 +48,24 @@ var GameManager = function(){
 			$("#newgame-button").hide();
 			$("#restart-button").show();
 
-			// for (var i = 0; i < boardSet.boardP1.length; i++){
-			// 	$("#cell"+i).onClick = console.log("I'm potato " + i);
-			// }
-			
+			$(document).ready(function(){
+
+				for(var i=0;i<boardSet.boardP1;i++){
+					var i;
+
+					$("#cell"+i).click( function(e){
+						e.preventDefault();
+						console.log("I'm potato "+ i);
+						// debugger
+						// this.shipDrop();
+
+					});
+					
+				}
+			})
+
 		});
+		
 	}
 
 	this.newGame = function(){
@@ -65,6 +79,7 @@ var GameManager = function(){
 
 		this.userInfo1 = new UserInfo();
 		this.userInfo2 = new UserInfo();
+		
 	}
 
 	this.gameSetup1 = function(username, password){
@@ -78,10 +93,15 @@ var GameManager = function(){
 		this.userInfo2.password = password;
 	}
 
-	// this.shipDrop = function(e){
+	this.shipDrop = function() {
+		console.log("I am reached");
+		//var i = boardSet.boardP1;
 		
-	// }
-
+		//$().on('click', function(){})
+		// $("#cell"+i).onClick = console.log("I'm potato " + i);
+		// for (var i = 0; i < boardSet.boardP1.length; i++){
+		// 	$("#cell"+i).onClick = console.log("I'm potato " + i);
+	};
 };
 
 var gameManager = new GameManager();
