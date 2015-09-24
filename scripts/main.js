@@ -2,7 +2,7 @@ $("#restart-button").hide();
 $("#hm-p1").hide();
 $("#ps-p2").hide();
 $("#hm-p2").hide();
-
+$(".ship-box").hide();
 
 function UserInfo(username,password){
 	this.username = username;
@@ -59,6 +59,7 @@ var GameManager = function(){
 			    $(this).find('form')[0].reset();
 				$("#newgame-button").hide();
 				$("#restart-button").show();
+				$(".ship-box").show();
 				});
 			})
 
@@ -76,6 +77,7 @@ var GameManager = function(){
 
 		$("#newgame").click(function(){
 			
+
 			boardSet.boardP1 = new Array();
 			boardSet.boardTurnP1 = new Array();
 
@@ -125,7 +127,6 @@ var GameManager = function(){
 			// at the least, name values with variables to make more readable, and add a comment explaining what's happening
 		    if ((rowLength-((shipAnchor+1)%rowLength)+1) >= shipSize && ((shipAnchor+1)%rowLength) != 0) {
 
-
 				for (var i = shipAnchor; i<(shipAnchor + shipSize); i++) {
 					console.log(boardSet.currentPlayer);
 					$('#'+gridId+i).css("background-color","brown");
@@ -136,17 +137,30 @@ var GameManager = function(){
 					};
 					$('#'+shipType).parents().eq(2).hide();
 				}
-			shipCounter++;
-			if(shipCounter == 2){
-				boardSet.currentPlayer = 'P2';
-				console.log("Ship placement finish");
-				$("#ps-p1").hide();
-				$("#ps-p2").show();
-				$("#player2").modal('show');
-				$("#shipselect-1").show();	
-				$("#shipselect-2").show();	
-			};
 
+				shipCounter++;
+				console.log(shipCounter);
+				if(shipCounter == 2){
+
+					if(boardSet.currentPlayer == 'P1'){
+						console.log("Ship placement finish");
+						$("#ps-p1").hide();
+						$("#ps-p2").show();
+						$("#player2").modal('show');
+						$('.radio').prop('checked',false);
+						$(".ship-box").show();
+						boardSet.currentPlayer = 'P2'
+						shipCounter = 0;
+					} else {
+						boardSet.currentPlayer = 'P1';
+						$("#ps-p2").hide();
+						$("#hm-p1").show();
+						$("#hm-player1").modal('show');
+						console.log("finished player 2 placement");
+
+						that.hitMiss();
+					}
+				};
 				
 		    } else {  	
 		    	$('#error').modal('show');
@@ -155,6 +169,30 @@ var GameManager = function(){
 		});
 								
 	};
+
+	this.hitMiss = function(){
+		
+		$('.grid-hm').click(function (event){
+
+			var gridId = this.id;
+		    gridId = gridId.substring(-3,9);
+
+		    debugger
+
+		    if(boardSet.currentPlayer == "P1"){
+		    	if(($.inArray(gridId),boardSet.boardP2) <= -1) {
+		    	$('#hmp1-cell'+gridId).css("background-color","blue");	
+		    		
+		    	} else if (($.inArray(gridId),boardSet.boardP2) > -1) {
+		    		$('#hmp1-cell'+gridId).css("background-color","red");
+		    	}
+		    	// if (gridId == boardSet.boardP2[]){
+		    } else {
+
+		    }
+		  
+		})
+	}
 	this.shipDrop();
 };
 
