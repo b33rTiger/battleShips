@@ -15,7 +15,8 @@ var boardSet = {
 	boardTurnP1: [24],
 	boardP2: [24],
 	boardTurnP2: [24],
-	cellE: [4,9,14,19,24]
+	cellE: [4,9,14,19,24],
+	currentPlayer:"P1"
 }
 
 var GameManager = function(){
@@ -56,6 +57,8 @@ var GameManager = function(){
 
 				$('#userModal2').on('hidden.bs.modal', function(){
 			    $(this).find('form')[0].reset();
+				$("#newgame-button").hide();
+				$("#restart-button").show();
 				});
 			})
 
@@ -64,8 +67,6 @@ var GameManager = function(){
 			    $(this).find('form')[0].reset();
 			});
 
-			$("#newgame-button").hide();
-			$("#restart-button").show();
 
 		});
 		
@@ -103,6 +104,7 @@ var GameManager = function(){
 	
 	this.shipDrop = function() {
 
+		var shipCounter = 0;
 		$(".grid-dot").click(function (event) {
 
 		    var shipAnchor = this.id;
@@ -110,34 +112,49 @@ var GameManager = function(){
 		    gridId = gridId.substring(-3,9);
 		    shipAnchor = shipAnchor.substring(9);
 		    shipAnchor = parseInt(shipAnchor);
-		    console.log(gridId);
 
 		 	$("input:checkbox[name=ship]:checked").each(function(){
 				shipSize = parseInt($(this).val());
+				shipType = $(this).attr('id');
 			});
 
 			var rowLength = 5;
+			shipCounter++;
+
+			if(shipCounter == 2){
+				currentPlayer = 'P2';						
+				console.log("Ship placement finish");
+				$("#ps-p1").hide();
+				$("#ps-p2").show();
+				$("#userPwModal2").modal('show');
+			};
 
 			// consider refactoring condition (Jordan said don't count off)
 			// at the least, name values with variables to make more readable, and add a comment explaining what's happening
 		    if ((rowLength-((shipAnchor+1)%rowLength)+1) >= shipSize && ((shipAnchor+1)%rowLength) != 0) {
 
 				boardSet.boardP1.push(shipAnchor);
+
 				for (var i = shipAnchor; i<(shipAnchor + shipSize); i++) {
-					console.log(gridId+i);
-					$(gridId+i).css("background-color","brown");
-					// $("input:checkbox[name=ship]:checked").hide();
-					$(".shipImage").each(function(){
-						$(this).hide();
-						$("input:checkbox").hide();
-					})
+					$('#'+gridId+i).css("background-color","brown");
+					$('#'+shipType).parents().eq(2).hide();
 
-					// $("#smallShip").hide();
+					// $('#'+shipType).parents().eq(2).hide();
+					// shipCounter ++;
+					// 	//pop up modal for player 2 password
+					// 	//show player 2 board for set up
+					// 	console.log("P1 done with ship placement!");
+					// 	console.log(shipCounter);
+					// }
+					// $(".shipImage").each(function(){
+					// })
+
 				}
-
+				// shipCounter++;
 		    } else {  	
 		    	$('#error').modal('show');
 			}
+
 		});
 	};
 	this.shipDrop();
