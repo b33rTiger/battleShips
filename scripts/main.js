@@ -95,28 +95,28 @@ var GameManager = function(){
 
 	this.shipDrop = function() {
 		$(".grid-dot").click(function (event) {
-		    var placeShip = this.id;
-		    placeShip = placeShip.substring(4);
-		    placeShip = parseInt(placeShip);
+		    var shipAnchor = this.id;
+		    shipAnchor = shipAnchor.substring(4);
+		    shipAnchor = parseInt(shipAnchor);
 		    $("input:checkbox[name=ship]:checked").each(function(){
 				size = parseInt($(this).val());
 			});
 
-			console.log((5-((placeShip+1)%5)+1));
+			console.log((5-((shipAnchor+1)%5)+1));
 			console.log(size);
 
 			var rowLength = 5;
 
 			// consider refactoring condition (Jordan said don't count off)
 			// at the least, name values with variables to make more readable, and add a comment explaining what's happening
-		    if ((rowLength-((placeShip+1)%rowLength)+1) >= size && ((placeShip+1)%rowLength) != 0) {
-				boardSet.boardP1.push(placeShip);
+		    if ((rowLength-((shipAnchor+1)%rowLength)+1) >= size && ((shipAnchor+1)%rowLength) != 0) {
+				boardSet.boardP1.push(shipAnchor);
 
 				// var size = 0;
 
 				// $("input:checkbox[name=ship]:checked").each(function(){
 				// 	size = parseInt($(this).val());
-				for (var i = placeShip; i<(placeShip + size); i++) {
+				for (var i = shipAnchor; i<(shipAnchor + size); i++) {
 					$("#cell"+i).css("background-color","brown");
 				}
 		    } else{  	
