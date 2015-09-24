@@ -94,7 +94,9 @@ var GameManager = function(){
 
 	var that = this;
 
-	//shipAnchor was previously named placeShip. Renamed for more clarity
+	//shipAnchor was previously named placeShip. Renamed for more clarity.
+	//shipAnchor indicates the cell number of the grid cell you click on to place the boats.
+	
 	this.shipDrop = function() {
 
 		$(".grid-dot").click(function (event) {
