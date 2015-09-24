@@ -21,17 +21,18 @@ var GameManager = function(){
 		this.newGame();
 
 		$("input:checkbox").click(function() {
-		if ($(this).is(":checked")) {
-		    var group = "input:checkbox[name='" + $(this).attr("name") + "']";
-		    $(group).prop("checked", false);
-		    $(this).prop("checked", true);
-		} else {
-		    $(this).prop("checked", false);
-		}
-		});
-		
+
+			if ($(this).is(":checked")) {
+			    var group = "input:checkbox[name='" + $(this).attr("name") + "']";
+			    $(group).prop("checked", false);
+			    $(this).prop("checked", true);
+			} else {
+			    $(this).prop("checked", false);
+			}
+		});	
 
 		$("#info-submit1").on('click', function(e){
+
 			e.preventDefault();
 			var useName1 = $("#username1").val();
 			var usePass1 = $("#password1").val();
@@ -41,6 +42,7 @@ var GameManager = function(){
 			$('#userModal2').modal('show')
 
 			$("#info-submit2").on('click', function(e){
+
 				e.preventDefault();
 				var useName2 = $("#username2").val();
 				var usePass2 = $("#password2").val();
@@ -60,7 +62,6 @@ var GameManager = function(){
 
 			$("#newgame-button").hide();
 			$("#restart-button").show();
-
 
 		});
 		
@@ -93,35 +94,40 @@ var GameManager = function(){
 
 	var that = this;
 
+	//shipAnchor was previously named placeShip. Renamed for more clarity
 	this.shipDrop = function() {
+
 		$(".grid-dot").click(function (event) {
+
 		    var shipAnchor = this.id;
 		    shipAnchor = shipAnchor.substring(4);
 		    shipAnchor = parseInt(shipAnchor);
-		    $("input:checkbox[name=ship]:checked").each(function(){
-				size = parseInt($(this).val());
-			});
 
-			console.log((5-((shipAnchor+1)%5)+1));
-			console.log(size);
+		 	$("input:checkbox[name=ship]:checked").each(function(){
+				shipSize = parseInt($(this).val());
+			});
 
 			var rowLength = 5;
 
 			// consider refactoring condition (Jordan said don't count off)
 			// at the least, name values with variables to make more readable, and add a comment explaining what's happening
-		    if ((rowLength-((shipAnchor+1)%rowLength)+1) >= size && ((shipAnchor+1)%rowLength) != 0) {
+		    if ((rowLength-((shipAnchor+1)%rowLength)+1) >= shipSize && ((shipAnchor+1)%rowLength) != 0) {
+
 				boardSet.boardP1.push(shipAnchor);
+				for (var i = shipAnchor; i<(shipAnchor + shipSize); i++) {
 
-				// var size = 0;
-
-				// $("input:checkbox[name=ship]:checked").each(function(){
-				// 	size = parseInt($(this).val());
-				for (var i = shipAnchor; i<(shipAnchor + size); i++) {
 					$("#cell"+i).css("background-color","brown");
+					// $("input:checkbox[name=ship]:checked").hide();
+					$(".shipImage").each(function(){
+						$(this).hide();
+						$("input:checkbox").hide();
+					})
+
+					// $("#smallShip").hide();
 				}
-		    } else{  	
+
+		    } else {  	
 		    	$('#error').modal('show');
-		    	// that.shipDrop();
 			}
 		});
 	};
