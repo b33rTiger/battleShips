@@ -19,13 +19,13 @@
 		<h1>BATTLESHITS!!!</h1>
 		<div class="row">
 			<div class="col-md-2">
-				<div class="row" id="shipselect-1">
-					<div draggable="true" class="checkbox"><label><input type="checkbox" class="radio" value="2" name="ship">
+				<div class="row">
+					<div draggable="true" class="checkbox"><label><input type="checkbox" class="radio" id="shipselect-1" value="2" name="ship">
 						<img id="smallShip" class="shipImage img-responsive" src="images/smallship.png" /></label>
 					</div>
 				</div>
-				<div class="row" id="shipselect-2"> 
-					<div draggable="true" class="checkbox"><label><input type="checkbox" class="radio" value="4" name="ship">
+				<div class="row"> 
+					<div draggable="true" class="checkbox"><label><input type="checkbox" class="radio" id="shipselect-2" value="4" name="ship">
 						<img id="mediumShip" class="shipImage img-responsive" src="images/mediumship.png" /></label>
 					</div>
 				</div>
@@ -641,8 +641,40 @@
 	    </div>
 	</div>
 		<!-- Password Only (Player 2) Modal -->
-	<div class="modal fade" id="userPwModal2" tabindex="-1" role="dialog" 
+<!-- 	<div class="modal fade" id="userPwModal2" tabindex="-1" role="dialog" 
 	     aria-labelledby="userPwModal2" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content"> -->
+	            <!-- Modal Header -->
+<!-- 	            <div class="modal-header">
+	                <button type="button" class="close" 
+	                   data-dismiss="modal">
+	                       <span aria-hidden="true">&times;</span>
+	                       <span class="sr-only">Close</span>
+	                </button>
+	                <h4 class="modal-title">
+	                    Enter Password
+	                </h4>
+	                <h5 id="p1pw"> Player 2, enter your password. To take your turn.</h5>
+	            </div> -->
+	            
+	            <!-- Modal Body -->
+<!-- 	            <div class="modal-body">
+	                <form role="form">
+	                  <div class="form-group">
+	                    <label for="Password">Password</label>
+	                      <input type="password" class="close"
+	                          id="password2" placeholder="Password"/>
+	                  </div>
+	                  <button class="btn btn-default" id="info-submit1">Submit</button>
+	                </form> 
+	            </div>
+	        </div>
+	    </div>
+	</div> -->
+		<!-- Player 2 Turn-->
+	<div class="modal fade" id="player2" tabindex="-1" role="dialog" 
+	     aria-labelledby="error" aria-hidden="true">
 	    <div class="modal-dialog">
 	        <div class="modal-content">
 	            <!-- Modal Header -->
@@ -653,21 +685,8 @@
 	                       <span class="sr-only">Close</span>
 	                </button>
 	                <h4 class="modal-title">
-	                    Enter Password
+	                    Player 1, please turn around for Player 2 to place their ships.
 	                </h4>
-	                <h5 id="p1pw"> Player 2, enter your password. To take your turn.</h5>
-	            </div>
-	            
-	            <!-- Modal Body -->
-	            <div class="modal-body">
-	                <form role="form">
-	                  <div class="form-group">
-	                    <label for="Password">Password</label>
-	                      <input type="password" class="form-control"
-	                          id="password2" placeholder="Password"/>
-	                  </div>
-	                  <button class="btn btn-default" id="info-submit1">Submit</button>
-	                </form> 
 	            </div>
 	        </div>
 	    </div>

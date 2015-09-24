@@ -119,43 +119,41 @@ var GameManager = function(){
 			});
 
 			var rowLength = 5;
-			shipCounter++;
 
-			if(shipCounter == 2){
-				currentPlayer = 'P2';						
-				console.log("Ship placement finish");
-				$("#ps-p1").hide();
-				$("#ps-p2").show();
-				$("#userPwModal2").modal('show');
-			};
 
 			// consider refactoring condition (Jordan said don't count off)
 			// at the least, name values with variables to make more readable, and add a comment explaining what's happening
 		    if ((rowLength-((shipAnchor+1)%rowLength)+1) >= shipSize && ((shipAnchor+1)%rowLength) != 0) {
 
-				boardSet.boardP1.push(shipAnchor);
 
 				for (var i = shipAnchor; i<(shipAnchor + shipSize); i++) {
+					console.log(boardSet.currentPlayer);
 					$('#'+gridId+i).css("background-color","brown");
+			    	if (boardSet.currentPlayer == 'P1') {
+						boardSet.boardP1.push(i);
+					}else {
+						boardSet.boardP2.push(i);
+					};
 					$('#'+shipType).parents().eq(2).hide();
-
-					// $('#'+shipType).parents().eq(2).hide();
-					// shipCounter ++;
-					// 	//pop up modal for player 2 password
-					// 	//show player 2 board for set up
-					// 	console.log("P1 done with ship placement!");
-					// 	console.log(shipCounter);
-					// }
-					// $(".shipImage").each(function(){
-					// })
-
 				}
-				// shipCounter++;
+			shipCounter++;
+			if(shipCounter == 2){
+				boardSet.currentPlayer = 'P2';
+				console.log("Ship placement finish");
+				$("#ps-p1").hide();
+				$("#ps-p2").show();
+				$("#player2").modal('show');
+				$("#shipselect-1").show();	
+				$("#shipselect-2").show();	
+			};
+
+				
 		    } else {  	
 		    	$('#error').modal('show');
 			}
 
 		});
+								
 	};
 	this.shipDrop();
 };
