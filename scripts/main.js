@@ -1,4 +1,8 @@
 $("#restart-button").hide();
+$("#hm-p1").hide();
+$("#ps-p2").hide();
+$("#hm-p2").hide();
+
 
 function UserInfo(username,password){
 	this.username = username;
@@ -100,8 +104,11 @@ var GameManager = function(){
 		$(".grid-dot").click(function (event) {
 
 		    var shipAnchor = this.id;
-		    shipAnchor = shipAnchor.substring(4);
+		    var gridId = this.id;
+		    gridId = gridId.substring(-3,9);
+		    shipAnchor = shipAnchor.substring(9);
 		    shipAnchor = parseInt(shipAnchor);
+		    console.log(gridId);
 
 		 	$("input:checkbox[name=ship]:checked").each(function(){
 				shipSize = parseInt($(this).val());
@@ -115,8 +122,8 @@ var GameManager = function(){
 
 				boardSet.boardP1.push(shipAnchor);
 				for (var i = shipAnchor; i<(shipAnchor + shipSize); i++) {
-
-					$("#cell"+i).css("background-color","brown");
+					console.log(gridId+i);
+					$(gridId+i).css("background-color","brown");
 					// $("input:checkbox[name=ship]:checked").hide();
 					$(".shipImage").each(function(){
 						$(this).hide();
