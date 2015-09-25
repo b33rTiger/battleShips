@@ -36,7 +36,10 @@
 					  <button type="button" class="btn btn-default" id="newgame-button" data-toggle="modal" data-target="#userModal1">New Game</button>
 					</div>
 					<div class="btn" role="group">
-					  <button type="button" class="btn btn-default" id="restart-button">Restart</button>
+					  <button type="button" class="btn btn-success" id="endturnhit-button">End Turn</button>
+					</div>
+					<div class="btn" role="group">
+					  <button type="button" class="btn btn-success" id="endturnmiss-button">End Turn</button>
 					</div>
 					<div class="btn" role="group">
 					  <button type="button" class="btn btn-default" id="tutorial">Tutorial</button>
@@ -640,38 +643,6 @@
 	        </div>
 	    </div>
 	</div>
-		<!-- Password Only (Player 2) Modal -->
-<!-- 	<div class="modal fade" id="userPwModal2" tabindex="-1" role="dialog" 
-	     aria-labelledby="userPwModal2" aria-hidden="true">
-	    <div class="modal-dialog">
-	        <div class="modal-content"> -->
-	            <!-- Modal Header -->
-<!-- 	            <div class="modal-header">
-	                <button type="button" class="close" 
-	                   data-dismiss="modal">
-	                       <span aria-hidden="true">&times;</span>
-	                       <span class="sr-only">Close</span>
-	                </button>
-	                <h4 class="modal-title">
-	                    Enter Password
-	                </h4>
-	                <h5 id="p1pw"> Player 2, enter your password. To take your turn.</h5>
-	            </div> -->
-	            
-	            <!-- Modal Body -->
-<!-- 	            <div class="modal-body">
-	                <form role="form">
-	                  <div class="form-group">
-	                    <label for="Password">Password</label>
-	                      <input type="password" class="close"
-	                          id="password2" placeholder="Password"/>
-	                  </div>
-	                  <button class="btn btn-default" id="info-submit1">Submit</button>
-	                </form> 
-	            </div>
-	        </div>
-	    </div>
-	</div> -->
 
 	<!-- Player 1 Turn-->
 	<div class="modal fade" id="hm-player1" tabindex="-1" role="dialog" 
@@ -713,7 +684,65 @@
 	        </div>
 	    </div>
 	</div>
+		<!-- Player Hit-->
+	<div class="modal fade" id="player-hit" tabindex="-1" role="dialog" 
+	     aria-labelledby="error" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <!-- Modal Header -->
+	            <div class="modal-header">
+	                <button type="button" class="close" 
+	                   data-dismiss="modal">
+	                       <span aria-hidden="true">&times;</span>
+	                       <span class="sr-only">Close</span>
+	                </button>
+	                <h4 class="modal-title">
+	                    You hit a shit!
+	                </h4>
+	            </div>
+	        </div>
+	    </div>
+	</div>
 
+	<!-- Player Miss-->
+	<div class="modal fade" id="player-miss" tabindex="-1" role="dialog" 
+	     aria-labelledby="error" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <!-- Modal Header -->
+	            <div class="modal-header">
+	                <button type="button" class="close" 
+	                   data-dismiss="modal">
+	                       <span aria-hidden="true">&times;</span>
+	                       <span class="sr-only">Close</span>
+	                </button>
+	                <h4 class="modal-title">
+	                    You missed, shithead! 
+	                </h4>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<!-- Player Attack Alert-->
+	<div class="modal fade" id="player-attack" tabindex="-1" role="dialog" 
+	     aria-labelledby="error" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <!-- Modal Header -->
+	            <div class="modal-header">
+	                <button type="button" class="close" 
+	                   data-dismiss="modal">
+	                       <span aria-hidden="true">&times;</span>
+	                       <span class="sr-only">Close</span>
+	                </button>
+	                <h4 class="modal-title">
+	                    Next Player's Turn. 
+	                </h4>
+	            </div>
+	        </div>
+	    </div>
+	</div>
 
 	<!-- Contact Modal -->
 	<div class="modal fade" id="contact-us" tabindex="-1" role="dialog" 
