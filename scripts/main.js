@@ -90,17 +90,17 @@ var GameManager = function(){
 	}
 
 	var that = this;
+	var shipCounter = 0;
 
 	//shipAnchor was previously named placeShip. Renamed for more clarity.
 	//shipAnchor indicates the cell number of the grid cell you click on to place the boats.
 	
-	this.shipDrop = function() {
+	this.shipDrop = function(targetId) {
 
-		var shipCounter = 0;
-		$(".grid-dot").click(function (event) {
-
-		    var shipAnchor = this.id;
-		    var gridId = this.id;
+			var shipSize = 0;
+			var shipType = 0;
+		    var shipAnchor = targetId+"";
+		    var gridId = targetId+"";
 		    gridId = gridId.substring(-3,9);
 		    shipAnchor = shipAnchor.substring(9);
 		    shipAnchor = parseInt(shipAnchor);
@@ -111,7 +111,6 @@ var GameManager = function(){
 			});
 
 			var rowLength = 5;
-
 
 			// consider refactoring condition (Jordan said don't count off)
 			// at the least, name values with variables to make more readable, and add a comment explaining what's happening
@@ -126,7 +125,6 @@ var GameManager = function(){
 					};
 					$('#'+shipType).parents().eq(2).hide();
 				}
-
 				shipCounter++;
 				if(shipCounter == 2){
 
@@ -150,122 +148,113 @@ var GameManager = function(){
 				
 		    } else {  	
 		    	$('#error').modal('show');
-			}
-		});					
+			}					
 	};
 
-	this.hitMiss = function(){
-		// console.log("This is hitMiss");
-		$('.grid-hm').click(function (event){
+	this.hitMiss = function(hmTargetId){
 
-			var gridId = this.id;
-		    gridId = parseInt(gridId.substring(9));
+		var gridId = hmTargetId+"";
+	    gridId = parseInt(gridId.substring(9));
 
-		    if(boardSet.currentPlayer == "P1"){
-		    	if(boardSet.boardP2.indexOf(gridId)<= -1) {
-		    		$("#endturnmiss-button").show();
-		    		$("#endturnhit-button").hide();
-					$('#player-miss').modal('show');
-		    		$('#hmp1-cell'+gridId).css("background-color","blue");
-		    		console.log("p1 miss");
-		    		that.endTurnMiss();
+	    if(boardSet.currentPlayer == "P1"){
+	    	if(boardSet.boardP2.indexOf(gridId)<= -1) {
+	    		$("#endturnmiss-button").show();
+	    		$("#endturnhit-button").hide();
+				$('#player-miss').modal('show');
+	    		$('#hmp1-cell'+gridId).css("background-color","blue");
+	    		console.log("p1 miss");
 
-		    	} else if (boardSet.boardP2.indexOf(gridId)> -1) {
-		    		$("#endturnmiss-button").hide();
-		    		$("#endturnhit-button").show();
-		    		$('#player-hit').modal('show');
-		    		$('#hmp1-cell'+gridId).css("background-image","url(./images/hitmarker.png)");
-		    		boardSet.boardTurnP1.push(gridId);
-		    		console.log("p1 hit");
-		    		that.endTurnHit();
-		    	}
+	    	} else if (boardSet.boardP2.indexOf(gridId)> -1) {
+	    		$("#endturnmiss-button").hide();
+	    		$("#endturnhit-button").show();
+	    		$('#player-hit').modal('show');
+	    		$('#hmp1-cell'+gridId).css("background-image","url(./images/hitmarker.png)");
+	    		boardSet.boardTurnP1.push(gridId);
+	    		console.log("p1 hit");
 
-		    } else if (boardSet.currentPlayer == "P2"){
-		    	if(boardSet.boardP1.indexOf(gridId)<= -1) {
-		    		$("#endturnmiss-button").show();
-		    		$("#endturnhit-button").hide();
-					$('#player-miss').modal('show');
-		    		$('#hmp2-cell'+gridId).css("background-color","blue");
-		    		console.log("p2 miss");
-		    		that.endTurnMiss();
+	    	}
 
-		    	} else if (boardSet.boardP1.indexOf(gridId)> -1) {
-		    		$("#endturnmiss-button").hide();
-		    		$("#endturnhit-button").show();
-		    		$('#player-hit').modal('show');
-		    		$('#hmp2-cell'+gridId).css("background-image","url(./images/hitmarker.png)");
-		    		boardSet.boardTurnP2.push(gridId);
-		    		console.log("p2 hit");
-		    		that.endTurnHit();
-		    		}
+	    } else if (boardSet.currentPlayer == "P2"){
+	    	if(boardSet.boardP1.indexOf(gridId)<= -1) {
+	    		$("#endturnmiss-button").show();
+	    		$("#endturnhit-button").hide();
+				$('#player-miss').modal('show');
+	    		$('#hmp2-cell'+gridId).css("background-color","blue");
+	    		console.log("p2 miss");
+
+
+	    	} else if (boardSet.boardP1.indexOf(gridId)> -1) {
+	    		$("#endturnmiss-button").hide();
+	    		$("#endturnhit-button").show();
+	    		$('#player-hit').modal('show');
+	    		$('#hmp2-cell'+gridId).css("background-image","url(./images/hitmarker.png)");
+	    		boardSet.boardTurnP2.push(gridId);
+	    		console.log("p2 hit");
+
 	    		}
-		});	  
+			}	  
 	}
 
 	this.endTurnMiss = function(){
 
-		$('#endturnmiss-button').click(function (event) {
+		if (boardSet.currentPlayer == "P1") {
+			$("#hm-p1").hide();
+			$("#hm-p2").show();
+			boardSet.currentPlayer = "P2";
+			$('#player-attack').modal('show');
+			console.log("p1 miss endturn");
 
-			if (boardSet.currentPlayer == "P1") {
-				$("#hm-p1").hide();
-				$("#hm-p2").show();
-				boardSet.currentPlayer = "P2";
-				$('#player-attack').modal('show');
-				console.log("p1 miss endturn");
-
-			}else if(boardSet.currentPlayer == "P2") {
-	    		$("#hm-p2").hide();
-	    		$("#hm-p1").show();	
-				boardSet.currentPlayer = "P1";
-				$('#player-attack').modal('show');
-				console.log("p2 miss endturn");
-
-			};
-		})
+		}else if(boardSet.currentPlayer == "P2") {
+    		$("#hm-p2").hide();
+    		$("#hm-p1").show();	
+			boardSet.currentPlayer = "P1";
+			$('#player-attack').modal('show');
+			console.log("p2 miss endturn");
+		};
 	}
 
 	this.endTurnHit = function(){
 
-		$('#endturnhit-button').click(function (event) {
-
-			if (boardSet.currentPlayer == "P1") {
-	    		$("#hm-p1").hide();
-	    		$("#hm-p2").show();
-				boardSet.currentPlayer = "P2";
-				$('#player-attack').modal('show');
-				console.log("p1 hit endturn");
-			}else if(boardSet.currentPlayer == "P2") {
-				$("#hm-p2").hide();
-				$("#hm-p1").show();
-				boardSet.currentPlayer = "P1";
-				$('#player-attack').modal('show');
-				console.log("p2 hit endturn");
-			};
-		});
+		if (boardSet.currentPlayer == "P1") {
+    		$("#hm-p1").hide();
+    		$("#hm-p2").show();
+			boardSet.currentPlayer = "P2";
+			$('#player-attack').modal('show');
+			console.log("p1 hit endturn");
+		}else if(boardSet.currentPlayer == "P2") {
+			$("#hm-p2").hide();
+			$("#hm-p1").show();
+			boardSet.currentPlayer = "P1";
+			$('#player-attack').modal('show');
+			console.log("p2 hit endturn");
+		};
 	}
-	this.shipDrop();
-	this.hitMiss();
 };
 
 var gameManager = new GameManager();
 gameManager.init();
-
-// setup Click Handlers for gameManager
-// $('.grid-hm').click(function (event){
-// 	gameManager.hitMiss();
-// });
-
-// $('#endturnmiss-button').click(function (event) {
-// 	gameManager.endTurnMiss();
-// });
-
-// $('#endturnhit-button').click(function (event) {
-// 	gameManager.endTurnHit();
-// });
-
 $("#endturnhit-button").hide();
 $("#endturnmiss-button").hide();
 $("#hm-p1").hide();
 $("#ps-p2").hide();
 $("#hm-p2").hide();
 $(".ship-box").hide();
+
+
+// setup Click Handlers for gameManager
+
+$(".grid-dot").click(function (event) {
+	gameManager.shipDrop(event.target.id);
+});
+$('.grid-hm').click(function (event){
+	gameManager.hitMiss(event.target.id);
+});
+
+$('#endturnmiss-button').click(function (event) {
+	gameManager.endTurnMiss();
+});
+
+$('#endturnhit-button').click(function (event) {
+	gameManager.endTurnHit();
+});
+
