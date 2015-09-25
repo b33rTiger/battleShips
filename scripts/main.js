@@ -155,7 +155,7 @@ var GameManager = function(){
 	};
 
 	this.hitMiss = function(){
-		console.log("This is hitMiss");
+		// console.log("This is hitMiss");
 		$('.grid-hm').click(function (event){
 
 			var gridId = this.id;
@@ -174,7 +174,7 @@ var GameManager = function(){
 		    		$("#endturnmiss-button").hide();
 		    		$("#endturnhit-button").show();
 		    		$('#player-hit').modal('show');
-		    		$('#hmp1-cell'+gridId).css("background-color","red");
+		    		$('#hmp1-cell'+gridId).css("background-image","url(./images/hitmarker.png)");
 		    		boardSet.boardTurnP1.push(gridId);
 		    		console.log("p1 hit");
 		    		that.endTurnHit();
@@ -193,7 +193,7 @@ var GameManager = function(){
 		    		$("#endturnmiss-button").hide();
 		    		$("#endturnhit-button").show();
 		    		$('#player-hit').modal('show');
-		    		$('#hmp2-cell'+gridId).css("background-color","red");
+		    		$('#hmp2-cell'+gridId).css("background-image","url(./images/hitmarker.png)");
 		    		boardSet.boardTurnP2.push(gridId);
 		    		console.log("p2 hit");
 		    		that.endTurnHit();
