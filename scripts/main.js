@@ -61,17 +61,13 @@ var GameManager = function(){
 			$('#userModal1').on('hidden.bs.modal', function(){
 			    $(this).find('form')[0].reset();
 			});
-
-
 		});
-		
 	}
 
 	this.newGame = function(){
 
 		$("#newgame").click(function(){
 			
-
 			boardSet.boardP1 = new Array();
 			boardSet.boardTurnP1 = new Array();
 
@@ -148,116 +144,124 @@ var GameManager = function(){
 						$("#hm-p1").show();
 						$("#hm-player1").modal('show');
 
-						that.hitMiss();
 					}
+					
 				};
 				
 		    } else {  	
 		    	$('#error').modal('show');
 			}
-
-		});
-								
+		});					
 	};
 
 	this.hitMiss = function(){
+		console.log("This is hitMiss");
+		$('.grid-hm').click(function (event){
 
-		var gridId = $('.grid-hm').id;
-	    gridId = parseInt(gridId.substring(9));
-	    if(boardSet.currentPlayer == "P1"){
-	    	if(boardSet.boardP2.indexOf(gridId)<= -1) {
-	    		$("#endturnmiss-button").show();
-	    		$("#endturnhit-button").hide();
-				$('#player-miss').modal('show');
-	    		$('#hmp1-cell'+gridId).css("background-color","blue");
-	    		console.log("p1 miss");
-	    		that.endTurnMiss();
+			var gridId = this.id;
+		    gridId = parseInt(gridId.substring(9));
 
-	    	} else if (boardSet.boardP2.indexOf(gridId)> -1) {
-	    		$("#endturnmiss-button").hide();
-	    		$("#endturnhit-button").show();
-	    		$('#player-hit').modal('show');
-	    		$('#hmp1-cell'+gridId).css("background-color","red");
-	    		boardSet.boardTurnP1.push(gridId);
-	    		console.log("p1 hit");
-	    		that.endTurnHit();
-	    	}
+		    if(boardSet.currentPlayer == "P1"){
+		    	if(boardSet.boardP2.indexOf(gridId)<= -1) {
+		    		$("#endturnmiss-button").show();
+		    		$("#endturnhit-button").hide();
+					$('#player-miss').modal('show');
+		    		$('#hmp1-cell'+gridId).css("background-color","blue");
+		    		console.log("p1 miss");
+		    		that.endTurnMiss();
 
-	    } else if (boardSet.currentPlayer == "P2"){
-	    	if(boardSet.boardP1.indexOf(gridId)<= -1) {
-	    		$("#endturnmiss-button").show();
-	    		$("#endturnhit-button").hide();
-				$('#player-miss').modal('show');
-	    		$('#hmp2-cell'+gridId).css("background-color","blue");
-	    		console.log("p2 miss");
-	    		that.endTurnMiss();
+		    	} else if (boardSet.boardP2.indexOf(gridId)> -1) {
+		    		$("#endturnmiss-button").hide();
+		    		$("#endturnhit-button").show();
+		    		$('#player-hit').modal('show');
+		    		$('#hmp1-cell'+gridId).css("background-color","red");
+		    		boardSet.boardTurnP1.push(gridId);
+		    		console.log("p1 hit");
+		    		that.endTurnHit();
+		    	}
 
-	    	} else if (boardSet.boardP1.indexOf(gridId)> -1) {
-	    		$("#endturnmiss-button").hide();
-	    		$("#endturnhit-button").show();
-	    		$('#player-hit').modal('show');
-	    		$('#hmp2-cell'+gridId).css("background-color","red");
-	    		boardSet.boardTurnP2.push(gridId);
-	    		console.log("p2 hit");
-	    		that.endTurnHit();
-	    	}
-	    }
-		  
+		    } else if (boardSet.currentPlayer == "P2"){
+		    	if(boardSet.boardP1.indexOf(gridId)<= -1) {
+		    		$("#endturnmiss-button").show();
+		    		$("#endturnhit-button").hide();
+					$('#player-miss').modal('show');
+		    		$('#hmp2-cell'+gridId).css("background-color","blue");
+		    		console.log("p2 miss");
+		    		that.endTurnMiss();
+
+		    	} else if (boardSet.boardP1.indexOf(gridId)> -1) {
+		    		$("#endturnmiss-button").hide();
+		    		$("#endturnhit-button").show();
+		    		$('#player-hit').modal('show');
+		    		$('#hmp2-cell'+gridId).css("background-color","red");
+		    		boardSet.boardTurnP2.push(gridId);
+		    		console.log("p2 hit");
+		    		that.endTurnHit();
+		    		}
+	    		}
+		});	  
 	}
 
 	this.endTurnMiss = function(){
 
-		if (boardSet.currentPlayer == "P1") {
-			$("#hm-p1").hide();
-			$("#hm-p2").show();
-			boardSet.currentPlayer = "P2";
-			$('#player-attack').modal('show');
-			console.log("p1 miss endturn");
+		$('#endturnmiss-button').click(function (event) {
 
-		}else if(boardSet.currentPlayer == "P2") {
-    		$("#hm-p2").hide();
-    		$("#hm-p1").show();	
-			boardSet.currentPlayer = "P1";
-			$('#player-attack').modal('show');
-			console.log("p2 miss endturn");
+			if (boardSet.currentPlayer == "P1") {
+				$("#hm-p1").hide();
+				$("#hm-p2").show();
+				boardSet.currentPlayer = "P2";
+				$('#player-attack').modal('show');
+				console.log("p1 miss endturn");
 
-		};
+			}else if(boardSet.currentPlayer == "P2") {
+	    		$("#hm-p2").hide();
+	    		$("#hm-p1").show();	
+				boardSet.currentPlayer = "P1";
+				$('#player-attack').modal('show');
+				console.log("p2 miss endturn");
+
+			};
+		})
 	}
 
 	this.endTurnHit = function(){
 
-		if (boardSet.currentPlayer == "P1") {
-    		$("#hm-p1").hide();
-    		$("#hm-p2").show();
-			boardSet.currentPlayer = "P2";
-			$('#player-attack').modal('show');
-			console.log("p1 hit endturn");
-		}else if(boardSet.currentPlayer == "P2") {
-			$("#hm-p2").hide();
-			$("#hm-p1").show();
-			boardSet.currentPlayer = "P1";
-			$('#player-attack').modal('show');
-			console.log("p2 hit endturn");
-		};
+		$('#endturnhit-button').click(function (event) {
+
+			if (boardSet.currentPlayer == "P1") {
+	    		$("#hm-p1").hide();
+	    		$("#hm-p2").show();
+				boardSet.currentPlayer = "P2";
+				$('#player-attack').modal('show');
+				console.log("p1 hit endturn");
+			}else if(boardSet.currentPlayer == "P2") {
+				$("#hm-p2").hide();
+				$("#hm-p1").show();
+				boardSet.currentPlayer = "P1";
+				$('#player-attack').modal('show');
+				console.log("p2 hit endturn");
+			};
+		});
 	}
 	this.shipDrop();
+	this.hitMiss();
 };
 
 var gameManager = new GameManager();
 gameManager.init();
 
 // setup Click Handlers for gameManager
-$('.grid-hm').click(function (event){
-	gameManager.hitMiss();
-});
+// $('.grid-hm').click(function (event){
+// 	gameManager.hitMiss();
+// });
 
-$('#endturnmiss-button').click(function (event) {
-	gameManager.endTurnMiss();
-});
+// $('#endturnmiss-button').click(function (event) {
+// 	gameManager.endTurnMiss();
+// });
 
-$('#endturnhit-button').click(function (event) {
-	gameManager.endTurnHit();
-});
+// $('#endturnhit-button').click(function (event) {
+// 	gameManager.endTurnHit();
+// });
 
 $("#endturnhit-button").hide();
 $("#endturnmiss-button").hide();
