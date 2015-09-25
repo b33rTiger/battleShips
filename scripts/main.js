@@ -10,7 +10,22 @@ var boardSet = {
 	boardP2: [],
 	boardTurnP2: [],
 	cellE: [4,9,14,19,24],
-	currentPlayer: "P1"
+	currentPlayer: "P1",
+}
+
+var shipArray = {
+
+	shipStateP1: {
+
+		smallShipP1:[],
+		bigShipP1:[]
+	},
+
+	shipStateP2: {
+
+		smallShipP2:[],
+		bigShipP2:[]
+	}
 }
 
 var GameManager = function(){
@@ -120,8 +135,25 @@ var GameManager = function(){
 					$('#'+gridId+i).css("background-color","brown");
 			    	if (boardSet.currentPlayer == 'P1') {
 						boardSet.boardP1.push(i);
+
+						if(shipSize == 2){
+							shipArray.shipStateP1.smallShipP1.push(i);
+							console.log(shipArray.shipStateP1.smallShipP1 +"SmallShipP1 Array");	
+						}else if(shipSize ==4){
+							shipArray.shipStateP1.bigShipP1.push(i);
+							console.log(shipArray.shipStateP1.bigShipP1 + "BigShipP1 Array");
+						}
+
 					}else {
 						boardSet.boardP2.push(i);
+
+						if(shipSize == 2){
+							shipArray.shipStateP2.smallShipP2.push(i);
+							console.log(shipArray.shipStateP2.smallShipP2 + "SmallShipP2 Array");	
+						}else if(shipSize ==4){
+							shipArray.shipStateP2.bigShipP2.push(i);
+							console.log(shipArray.shipStateP2.bigShipP2 + "BigShipP2 Array");
+						}
 					};
 					$('#'+shipType).parents().eq(2).hide();
 				}
@@ -229,6 +261,19 @@ var GameManager = function(){
 			console.log("p2 hit endturn");
 		};
 	}
+
+	// this.sinkCheck = function(){
+
+	// 	if(shipArray.shipStateP1.smallShipP1 == boardSet.boardTurnP1){
+
+	// 	} else{
+
+	// 	}
+	// }
+
+	// this.victoryCheck = function(){
+
+	// }
 };
 
 var gameManager = new GameManager();
