@@ -176,11 +176,9 @@ var GameManager = function(){
 
 					}
 					
-				};
-				
-		    } else {  	
-		    	$('#error').modal('show');
-			}					
+				} else {  	
+			    	$('#error').modal('show');
+				}					
 	};
 
 	this.hitMiss = function(hmTargetId){
