@@ -82,75 +82,71 @@ var GameManager = function(){
 	
 	this.shipDrop = function(targetId) {
 	
-			var shipSize = 0;
-			var shipType = 0;
-		    var shipAnchor = targetId;
-		    var gridId = targetId;
-		    gridId = gridId.substring(-3,9);
-		    shipAnchor = shipAnchor.substring(9);
-		    shipAnchor = parseInt(shipAnchor);
+		var shipSize = 0;
+		var shipType = 0;
+	    var shipAnchor = targetId;
+	    var gridId = targetId;
+	    gridId = gridId.substring(-3,9);
+	    shipAnchor = shipAnchor.substring(9);
+	    shipAnchor = parseInt(shipAnchor);
 
-		 	$("input:checkbox[name=ship]:checked").each(function(){
-				shipSize = parseInt($(this).val());
-				shipType = $(this).attr('id');
-			});
+	 	$("input:checkbox[name=ship]:checked").each(function(){
+			shipSize = parseInt($(this).val());
+			shipType = $(this).attr('id');
+		});
 
-			var rowLength = 5;
+		var rowLength = 5;
 
-			// consider refactoring condition (Jordan said don't count off)
-			// at the least, name values with variables to make more readable, and add a comment explaining what's happening
-		    if ((rowLength-((shipAnchor+1)%rowLength)+1) >= shipSize && ((shipAnchor+1)%rowLength) != 0) {
+		// consider refactoring condition (Jordan said don't count off)
+		// at the least, name values with variables to make more readable, and add a comment explaining what's happening
+	    if ((rowLength-((shipAnchor+1)%rowLength)+1) >= shipSize && ((shipAnchor+1)%rowLength) != 0) {
 
-				for (var i = shipAnchor; i<(shipAnchor + shipSize); i++) {
-                    $('#'+gridId+i).css("background-color","brown");
-                    if (boardSet.currentPlayer == 'P1') {
-                        boardSet.boardP1.push(i);
+			for (var i = shipAnchor; i<(shipAnchor + shipSize); i++) {
+                $('#'+gridId+i).css("background-color","brown");
+                if (boardSet.currentPlayer == 'P1') {
+                    boardSet.boardP1.push(i);
 
-                        if(shipSize == 2){
-                            shipArray.shipStateP1.smallShipP1.push(i);
-                            console.log(shipArray.shipStateP1.smallShipP1 +"SmallShipP1 Array");    
-                        }else if(shipSize ==4){
-                            shipArray.shipStateP1.bigShipP1.push(i);
-                            console.log(shipArray.shipStateP1.bigShipP1 + "BigShipP1 Array");
-                        }
+                    if(shipSize == 2){
+                        shipArray.shipStateP1.smallShipP1.push(i);
+                    }else if(shipSize ==4){
+                        shipArray.shipStateP1.bigShipP1.push(i);
+                    }
 
-                    }else {
-                        boardSet.boardP2.push(i);
+                }else {
+                    boardSet.boardP2.push(i);
 
-                        if(shipSize == 2){
-                            shipArray.shipStateP2.smallShipP2.push(i);
-                            console.log(shipArray.shipStateP2.smallShipP2 + "SmallShipP2 Array");    
-                        }else if(shipSize ==4){
-                            shipArray.shipStateP2.bigShipP2.push(i);
-                            console.log(shipArray.shipStateP2.bigShipP2 + "BigShipP2 Array");
-                        }
-                    };
-                    $('#'+shipType).parents().eq(2).hide();
-				                }
-				shipCounter++;
-				if(shipCounter == 2){
+                    if(shipSize == 2){
+                        shipArray.shipStateP2.smallShipP2.push(i);
+                    }else if(shipSize ==4){
+                        shipArray.shipStateP2.bigShipP2.push(i);
+                    }
+                };
+                $('#'+shipType).parents().eq(2).hide();
+			                }
+			shipCounter++;
+			if(shipCounter == 2){
 
-					if(boardSet.currentPlayer == 'P1'){
-						$("#ps-p1").hide();
-						$("#ps-p2").show();
-						$("#player2").modal('show');
-						$('.radio').prop('checked',false);
-						$(".ship-box").show();
-						boardSet.currentPlayer = 'P2'
-						shipCounter = 0;
-					} else {
-						boardSet.currentPlayer = 'P1';
-						$("#ps-p2").hide();
-						$("#hm-p1").show();
-						$("#hm-player1").modal('show');
+				if(boardSet.currentPlayer == 'P1'){
+					$("#ps-p1").hide();
+					$("#ps-p2").show();
+					$("#player2").modal('show');
+					$('.radio').prop('checked',false);
+					$(".ship-box").show();
+					boardSet.currentPlayer = 'P2'
+					shipCounter = 0;
+				} else {
+					boardSet.currentPlayer = 'P1';
+					$("#ps-p2").hide();
+					$("#hm-p1").show();
+					$("#hm-player1").modal('show');
 
-					}
-					
-				};
+				}
 				
-		    } else {  	
-		    	$('#error').modal('show');
-			}					
+			};
+			
+	    } else {  	
+	    	$('#error').modal('show');
+		}					
 	};
 
 	this.hitMiss = function(hmTargetId){
@@ -164,7 +160,6 @@ var GameManager = function(){
 	    		$("#endturnhit-button").hide();
 				$('#player-miss').modal('show');
 	    		$('#hmp1-cell'+gridId).css("background-color","blue");
-	    		console.log("p1 miss");
 
 	    	} else if (boardSet.boardP2.indexOf(gridId)> -1) {
 	    		$("#endturnmiss-button").hide();
@@ -172,7 +167,6 @@ var GameManager = function(){
 	    		$('#player-hit').modal('show');
 	    		$('#hmp1-cell'+gridId).css("background-image","url(./images/hitmarker.png)");
 	    		boardSet.boardTurnP1.push(gridId);
-	    		console.log("p1 hit");
 
 	    	}
 
@@ -182,7 +176,6 @@ var GameManager = function(){
 	    		$("#endturnhit-button").hide();
 				$('#player-miss').modal('show');
 	    		$('#hmp2-cell'+gridId).css("background-color","blue");
-	    		console.log("p2 miss");
 
 
 	    	} else if (boardSet.boardP1.indexOf(gridId)> -1) {
@@ -191,7 +184,6 @@ var GameManager = function(){
 	    		$('#player-hit').modal('show');
 	    		$('#hmp2-cell'+gridId).css("background-image","url(./images/hitmarker.png)");
 	    		boardSet.boardTurnP2.push(gridId);
-	    		console.log("p2 hit");
 
 	    		}
 			}	  
@@ -204,14 +196,12 @@ var GameManager = function(){
 			$("#hm-p2").show();
 			boardSet.currentPlayer = "P2";
 			$('#player-attack').modal('show');
-			console.log("p1 miss endturn");
 
 		}else if(boardSet.currentPlayer == "P2") {
     		$("#hm-p2").hide();
     		$("#hm-p1").show();	
 			boardSet.currentPlayer = "P1";
 			$('#player-attack').modal('show');
-			console.log("p2 miss endturn");
 		};
 	}
 
@@ -222,13 +212,27 @@ var GameManager = function(){
     		$("#hm-p2").show();
 			boardSet.currentPlayer = "P2";
 			$('#player-attack').modal('show');
-			console.log("p1 hit endturn");
 		}else if(boardSet.currentPlayer == "P2") {
 			$("#hm-p2").hide();
 			$("#hm-p1").show();
 			boardSet.currentPlayer = "P1";
 			$('#player-attack').modal('show');
-			console.log("p2 hit endturn");
 		};
 	}
+
+	this.sinkCheck = function(){
+
+        if(shipArray.shipStateP1.smallShipP2 == boardSet.boardTurnP1){
+
+        	$('.sunken-ship').text("You flushed the small ship!!")
+        	$('#ship-sink').modal('show');
+
+        } else {
+
+        }
+	};
+
+	this.victoryCheck = function(){
+
+	};
 };
