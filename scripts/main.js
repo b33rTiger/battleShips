@@ -17,14 +17,32 @@ var shipArray = {
 
     shipStateP1: {
 
-        smallShipP1:[],
-        bigShipP1:[]
+        smallShipP1:{
+        	shipPosition:[],
+        	shipHit:[],
+        	shipSunk:false
+        },
+
+        bigShipP1:{
+        	shipPosition:[],
+        	shipHit:[],
+        	shipSunk:false
+        }
     },
 
     shipStateP2: {
 
-        smallShipP2:[],
-        bigShipP2:[]
+        smallShipP2:{
+        	shipPosition:[],
+        	shipHit:[],
+        	shipSunk:false
+        },
+
+        bigShipP2:{
+        	shipPosition:[],
+        	shipHit:[],
+        	shipSunk:false
+        }
     }
 }
 

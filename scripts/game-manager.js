@@ -107,18 +107,18 @@ var GameManager = function(){
                     boardSet.boardP1.push(i);
 
                     if(shipSize == 2){
-                        shipArray.shipStateP1.smallShipP1.push(i);
+                        shipArray.shipStateP1.smallShipP1.shipPosition.push(i);
                     }else if(shipSize ==4){
-                        shipArray.shipStateP1.bigShipP1.push(i);
+                        shipArray.shipStateP1.bigShipP1.shipPosition.push(i);
                     }
 
                 }else {
                     boardSet.boardP2.push(i);
 
                     if(shipSize == 2){
-                        shipArray.shipStateP2.smallShipP2.push(i);
+                        shipArray.shipStateP2.smallShipP2.shipPosition.push(i);
                     }else if(shipSize ==4){
-                        shipArray.shipStateP2.bigShipP2.push(i);
+                        shipArray.shipStateP2.bigShipP2.shipPosition.push(i);
                     }
                 };
                 $('#'+shipType).parents().eq(2).hide();
@@ -224,38 +224,71 @@ var GameManager = function(){
 		};
 	}
 
+	var sinkBoard = [];
+	var sinkShipSmall = [];
+	var sinkShipBig = [];
+	var sinkShipSmallPos = [];
+	var sinkShipBigPos = [];
+
 	this.sinkCheck = function(){
-
-		var sinkBoard = "boardSet.boardTurn"+boardSet.currentPlayer;
-
+		
 		if (boardSet.currentPlayer == "P1") {
 			var nextPlayer = "P2";
+			sinkBoard = boardSet.boardTurnP1;
+			sinkShipSmall = shipArray.shipStateP2.smallShipP2.shipHit;
+			sinkShipBig = shipArray.shipStateP2.bigShipP2.shipHit;
+			sinkShipSmallPos = shipArray.shipStateP2.smallShipP2.shipPosition;
+			sinkShipBigPos = shipArray.shipStateP2.bigShipP2.shipPosition;
+			sinkSmallShipConfirm = shipArray.shipStateP2.smallShipP2.shipSunk;
+			sinkBigShipConfirm = shipArray.shipStateP2.bigShipP2.shipSunk;
+
+
 		}else if (boardSet.currentPlayer == "P2") {
 			var nextPlayer = "P1";
+			sinkBoard = boardSet.boardTurnP2;
+			sinkShipSmall = shipArray.shipStateP1.smallShipP1.shipHit;
+			sinkShipBig = shipArray.shipStateP1.bigShipP1.shipHit;
+			sinkShipSmallPos = shipArray.shipStateP1.smallShipP1.shipPosition;
+			sinkShipBigPos = shipArray.shipStateP1.bigShipP1.shipPosition;
+			sinkSmallShipConfirm = shipArray.shipStateP1.smallShipP1.shipSunk;
+			sinkBigShipConfirm = shipArray.shipStateP1.bigShipP1.shipSunk;
+
 		};
-		
-		var sinkShip = "shipArray.shipState"+nextPlayer+".smallShip"+nextPlayer;
-		console.log(sinkShip);
 
 		for (var i = 0; i<sinkBoard.length; i++) {
 
-			for (var j = 0; j < sinkShip.length; j++) {
+			for (var j = 0; j < sinkShipSmallPos.length; j++) {
 
-				if(sinkBoard[i] == sinkShip[j]) {
-					sinkShip[j] = "X";
-					console.log(sinkShip);
+				if(sinkShipSmallPos[j]==sinkBoard[i]) {
+					sinkShipSmall.push('X');
+
+					if(sinkShipSmall.length === sinkShipSmallPos.length){
+						$('.sunken-ship').text("You flushed the small ship!!")
+						$('#ship-sink').modal('show');
+						sinkSmallShipConfirm = true;						
+					} 
 				}
 			}
-
-	        // if(shipArray.shipStateP1.smallShipP1 == boardSet.boardTurnP1){
-
-	        // 	$('.sunken-ship').text("You flushed the small ship!!")
-	        // 	$('#ship-sink').modal('show');
-
-	        // } else {
-
-        	// }
         };
+
+        for (var i = 0; i<sinkBoard.length; i++){
+        	console.log("at marking hits");
+        	for (var j = 0; j < sinkShipBig.length; j++) {
+
+        		if(sinkShipBig[j]==sinkBoard[i]) {
+        			sinkShipBig.push('X');
+
+        			if(sinkShipBig.length === sinkShipBigPos.length){
+        				$('.sunken-ship').text("You flushed the big ship!!")
+        				$('#ship-sink').modal('show');
+        				sinkBigShipConfirm = true;
+        				
+        			} 
+        		}
+        	}
+
+        }
+
 	};
 
 	this.victoryCheck = function(){
