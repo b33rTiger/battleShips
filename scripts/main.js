@@ -49,8 +49,11 @@ var shipArray = {
 var gameManager = new GameManager();
 gameManager.init();
 
+// $("#ps-player1").hide();
+// $("#ps-player2").hide();
 $("#endturnhit-button").hide();
 $("#endturnmiss-button").hide();
+$("#endturnplaceship-button").hide();
 $("#hm-p1").hide();
 $("#ps-p2").hide();
 $("#hm-p2").hide();
@@ -72,4 +75,8 @@ $('#endturnmiss-button').click(function (event) {
 
 $('#endturnhit-button').click(function (event) {
 	gameManager.endTurnHit();
+});
+
+$('#endturnplaceship-button').click(function (event) {
+	gameManager.endTurnPlaceShip();
 });

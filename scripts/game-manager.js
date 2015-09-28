@@ -15,69 +15,97 @@ var GameManager = function(){
 			}
 		});	
 
-		$("#info-submit1").on('click', function(e){
+		// $("#info-submit1").on('click', function(e){
 
-			e.preventDefault();
-			var useName1 = $("#username1").val();
-			var usePass1 = $("#password1").val();
+		// 	e.preventDefault();
+		// 	var useName1 = $("#username1").val();
+		// 	var usePass1 = $("#password1").val();
 
-			gameManager.gameSetup1(useName1,usePass1);
-			$('#userModal1').modal('hide')
-			$('#userModal2').modal('show')
+		// 	gameManager.gameSetup1(useName1,usePass1);
+		// 	$('#userModal1').modal('hide')
+		// 	$('#userModal2').modal('show')
 
-			$("#info-submit2").on('click', function(e){
+		// 	$("#info-submit2").on('click', function(e){
 
-				e.preventDefault();
-				var useName2 = $("#username2").val();
-				var usePass2 = $("#password2").val();
+		// 		e.preventDefault();
+		// 		var useName2 = $("#username2").val();
+		// 		var usePass2 = $("#password2").val();
 
-				gameManager.gameSetup2(useName2,usePass2);
-				$('#userModal2').modal('hide')
+		// 		gameManager.gameSetup2(useName2,usePass2);
+		// 		$('#userModal2').modal('hide')
 
-				$('#userModal2').on('hidden.bs.modal', function(){
-			    $(this).find('form')[0].reset();
-				$("#newgame-button").hide();
-				// $("#endturn-button").show();
-				$(".ship-box").show();
-				});
-			})
+		// 		$('#userModal2').on('hidden.bs.modal', function(){
+		// 	    $(this).find('form')[0].reset();
+		// 		$("#newgame-button").hide();
+		// 		$("#endturn-button").show();
+		// 		$(".ship-box").show();
+		// 		});
+		// 	})
 
-			//This prevents the previous user inputs from showing up when New Game is pressed again.
-			$('#userModal1').on('hidden.bs.modal', function(){
-			    $(this).find('form')[0].reset();
-			});
-		});
+		// 	//This prevents the previous user inputs from showing up when New Game is pressed again.
+		// 	$('#userModal1').on('hidden.bs.modal', function(){
+		// 	    $(this).find('form')[0].reset();
+		// 	});
+		// });
 	}
 
 	this.newGame = function(){
 
-		$("#newgame").click(function(){
-			
+		$("#newgame-button").click(function (){
+
+			// e.preventDefault();
+			console.log("new game clicked.");
 			boardSet.boardP1 = new Array();
 			boardSet.boardTurnP1 = new Array();
+			// $("#ps-player1").modal('show');
+			$("#newgame-button").hide();
+			console.log("new game button hidden?");
+			$("#endturnplaceship-button").show();
+			$(".ship-box").show();
 
 		});
+	};
 
-		this.userInfo1 = new UserInfo();
-		this.userInfo2 = new UserInfo();
-		
-	}
+	// 	this.userInfo1 = new UserInfo();
+	// 	this.userInfo2 = new UserInfo();		
+	// }
 
-	this.gameSetup1 = function(username, password){
-		this.userInfo1.username = username;
-		this.userInfo1.password = password;
+	// this.gameSetup1 = function(username, password){
+	// 	this.userInfo1.username = username;
+	// 	this.userInfo1.password = password;
 
-	}
+	// }
 
-	this.gameSetup2 = function(username,password){
-		this.userInfo2.username = username;
-		this.userInfo2.password = password;
-	}
+	// this.gameSetup2 = function(username,password){
+	// 	this.userInfo2.username = username;
+	// 	this.userInfo2.password = password;
+	// }
+
+
+	this.endTurnPlaceShip = function(){
+		console.log("end button clicked");
+		// if (shipCounter == 2){
+			if(boardSet.currentPlayer == 'P1'){
+				$("#ps-p1").hide();
+				$("#ps-p2").show();
+				$("#player2").modal('show');
+				$('.radio').prop('checked',false);
+				$(".ship-box").show();
+				boardSet.currentPlayer = 'P2'
+				shipCounter = 0;
+			} else {
+				boardSet.currentPlayer = 'P1';
+				$("#ps-p2").hide();
+				$("#hm-p1").show();
+				$("#hm-player1").modal('show');
+				$("#endturnplaceship-button").hide();
+			}
+		// };
+	};
 
 	var that = this;
 	var shipCounter = 0;
 
-	//shipAnchor was previously named placeShip. Renamed for more clarity.
 	//shipAnchor indicates the cell number of the grid cell you click on to place the boats.
 	
 	this.shipDrop = function(targetId) {
@@ -124,25 +152,6 @@ var GameManager = function(){
                 $('#'+shipType).parents().eq(2).hide();
 			                }
 			shipCounter++;
-			if(shipCounter == 2){
-
-				if(boardSet.currentPlayer == 'P1'){
-					$("#ps-p1").hide();
-					$("#ps-p2").show();
-					$("#player2").modal('show');
-					$('.radio').prop('checked',false);
-					$(".ship-box").show();
-					boardSet.currentPlayer = 'P2'
-					shipCounter = 0;
-				} else {
-					boardSet.currentPlayer = 'P1';
-					$("#ps-p2").hide();
-					$("#hm-p1").show();
-					$("#hm-player1").modal('show');
-
-				}
-				
-			};
 			
 	    } else {  	
 	    	$('#error').modal('show');
@@ -150,6 +159,8 @@ var GameManager = function(){
 	};
 
 	this.hitMiss = function(hmTargetId){
+
+		$("#endturnplaceship-button").hide();
 
 		var gridId = hmTargetId+"";
 	    gridId = parseInt(gridId.substring(9));
@@ -169,7 +180,6 @@ var GameManager = function(){
 	    		boardSet.boardTurnP1.push(gridId);
 	    		boardSet.boardTurnP1.sort();
 	    		that.sinkCheck();
-
 	    	}
 
 	    } else if (boardSet.currentPlayer == "P2"){
@@ -188,9 +198,8 @@ var GameManager = function(){
 	    		boardSet.boardTurnP2.push(gridId);
 	    		boardSet.boardTurnP2.sort();
 	    		that.sinkCheck();
-
-	    		}
-			}	  
+	    	}
+		}	  
 	}
 
 	this.endTurnMiss = function(){
@@ -242,7 +251,6 @@ var GameManager = function(){
 			sinkSmallShipConfirm = shipArray.shipStateP2.smallShipP2.shipSunk;
 			sinkBigShipConfirm = shipArray.shipStateP2.bigShipP2.shipSunk;
 
-
 		}else if (boardSet.currentPlayer == "P2") {
 			var nextPlayer = "P1";
 			sinkBoard = boardSet.boardTurnP2;
@@ -252,7 +260,6 @@ var GameManager = function(){
 			sinkShipBigPos = shipArray.shipStateP1.bigShipP1.shipPosition;
 			sinkSmallShipConfirm = shipArray.shipStateP1.smallShipP1.shipSunk;
 			sinkBigShipConfirm = shipArray.shipStateP1.bigShipP1.shipSunk;
-
 		};
 
 		for (var i = 0; i<sinkBoard.length; i++) {
@@ -281,14 +288,11 @@ var GameManager = function(){
         			if(sinkShipBig.length === sinkShipBigPos.length){
         				$('.sunken-ship').text("You flushed the big ship!!")
         				$('#ship-sink').modal('show');
-        				sinkBigShipConfirm = true;
-        				
+        				sinkBigShipConfirm = true;        				
         			} 
         		}
         	}
-
         }
-
 	};
 
 	this.victoryCheck = function(){

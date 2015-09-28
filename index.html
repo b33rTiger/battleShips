@@ -35,12 +35,15 @@
 			<div class="col-md-7">
 				<div class="button-container">
 					<div class="btn" role="group">
-					  <button type="button" class="btn btn-default" id="newgame-button" data-toggle="modal" data-target="#userModal1">New Game</button>
+					  <button type="button" class="btn btn-default" id="newgame-button" data-toggle="modal" data-target="#ps-player1">New Game</button>
 					</div>
 					<div class="btn" role="group" id="endturnhit-button">
 					  <button type="button" class="btn btn-success">End Turn</button>
 					</div>
 					<div class="btn" role="group" id="endturnmiss-button">
+					  <button type="button" class="btn btn-success">End Turn</button>
+					</div>
+					<div class="btn" role="group" id="endturnplaceship-button">
 					  <button type="button" class="btn btn-success">End Turn</button>
 					</div>
 					<div class="btn" role="group">
@@ -539,12 +542,12 @@
 	<!-- Modal -->
 
 	<!-- Username/Password (Player 1) Modal -->
-	<div class="modal fade" id="userModal1" tabindex="-1" role="dialog" 
+<!-- 	<div class="modal fade" id="userModal1" tabindex="-1" role="dialog" 
 	     aria-labelledby="userModal1" aria-hidden="true">
 	    <div class="modal-dialog">
-	        <div class="modal-content">
+	        <div class="modal-content"> -->
 	            <!-- Modal Header -->
-	            <div class="modal-header">
+<!-- 	            <div class="modal-header">
 	                <button type="button" class="close" 
 	                   data-dismiss="modal">
 	                       <span aria-hidden="true">&times;</span>
@@ -554,10 +557,10 @@
 	                    New Game
 	                </h4>
 	                <h5> Player 1, enter your username and password. *Warning: This password is stored in plain-text, so DO NOT use a password you use in other important accounts.</h5>
-	            </div>
+	            </div> -->
 	            
 	            <!-- Modal Body -->
-	            <div class="modal-body">
+<!-- 	            <div class="modal-body">
 	                <form role="form">
 	                  <div class="form-group">
 	                    <label for="Username">Username</label>
@@ -574,14 +577,14 @@
 	            </div>
 	        </div>
 	    </div>
-	</div>
+	</div> -->
 		<!-- Password Only (Player 1) Modal -->
-	<div class="modal fade" id="userPwModal1" tabindex="-1" role="dialog" 
+<!-- 	<div class="modal fade" id="userPwModal1" tabindex="-1" role="dialog" 
 	     aria-labelledby="userPwModal1" aria-hidden="true">
 	    <div class="modal-dialog">
-	        <div class="modal-content">
+	        <div class="modal-content"> -->
 	            <!-- Modal Header -->
-	            <div class="modal-header">
+<!-- 	            <div class="modal-header">
 	                <button type="button" class="close" 
 	                   data-dismiss="modal">
 	                       <span aria-hidden="true">&times;</span>
@@ -591,10 +594,10 @@
 	                    Enter Password
 	                </h4>
 	                <h5 id="p1pw"> Player 1, enter your password. To take your turn.</h5>
-	            </div>
+	            </div> -->
 	            
 	            <!-- Modal Body -->
-	            <div class="modal-body">
+<!-- 	            <div class="modal-body">
 	                <form role="form">
 	                  <div class="form-group">
 	                    <label for="Password">Password</label>
@@ -606,15 +609,15 @@
 	            </div>
 	        </div>
 	    </div>
-	</div>
+	</div> -->
 
 	<!-- Username/Password (Player 2) Modal -->
-	<div class="modal fade" id="userModal2" tabindex="-1" role="dialog" 
+<!-- 	<div class="modal fade" id="userModal2" tabindex="-1" role="dialog" 
 	     aria-labelledby="userModal2" aria-hidden="true">
 	    <div class="modal-dialog">
-	        <div class="modal-content">
+	        <div class="modal-content"> -->
 	            <!-- Modal Header -->
-	            <div class="modal-header">
+<!-- 	            <div class="modal-header">
 	                <button type="button" class="close" 
 	                   data-dismiss="modal">
 	                       <span aria-hidden="true">&times;</span>
@@ -624,10 +627,10 @@
 	                    New Game
 	                </h4>
 	                <h5> Player 2, enter your username and password. *Warning: This password is stored in plain-text, so DO NOT use a password you use in other important accounts.</h5>
-	            </div>
+	            </div> -->
 	            
 	            <!-- Modal Body -->
-	            <div class="modal-body">
+<!-- 	            <div class="modal-body">
 	                <form role="form">
 	                  <div class="form-group">
 	                    <label for="Username">Username</label>
@@ -644,7 +647,48 @@
 	            </div>
 	        </div>
 	    </div>
+	</div> -->
+
+	<!-- Player 1 Place Ships-->
+	<div class="modal fade" id="ps-player1" tabindex="-1" role="dialog" 
+	     aria-labelledby="error" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <!-- Modal Header -->
+	            <div class="modal-header">
+	                <button type="button" class="close" 
+	                   data-dismiss="modal">
+	                       <span aria-hidden="true">&times;</span>
+	                       <span class="sr-only">Close</span>
+	                </button>
+	                <h4 class="modal-title">
+	                    Player 1, click on a ship and then click on a grid point to place it. Click end turn when completed.
+	                </h4>
+	            </div>
+	        </div>
+	    </div>
 	</div>
+
+	<!-- Player 2 Place Ships-->
+	<div class="modal fade" id="ps-player2" tabindex="-1" role="dialog" 
+	     aria-labelledby="error" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <!-- Modal Header -->
+	            <div class="modal-header">
+	                <button type="button" class="close" 
+	                   data-dismiss="modal">
+	                       <span aria-hidden="true">&times;</span>
+	                       <span class="sr-only">Close</span>
+	                </button>
+	                <h4 class="modal-title">
+	                    Player 2, click on a ship and then click on a grid point to place it. Click end turn when completed.
+	                </h4>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
 
 	<!-- Player 1 Turn-->
 	<div class="modal fade" id="hm-player1" tabindex="-1" role="dialog" 
