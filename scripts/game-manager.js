@@ -167,6 +167,8 @@ var GameManager = function(){
 	    		$('#player-hit').modal('show');
 	    		$('#hmp1-cell'+gridId).css("background-image","url(./images/hitmarker.png)");
 	    		boardSet.boardTurnP1.push(gridId);
+	    		boardSet.boardTurnP1.sort();
+	    		that.sinkCheck();
 
 	    	}
 
@@ -184,6 +186,8 @@ var GameManager = function(){
 	    		$('#player-hit').modal('show');
 	    		$('#hmp2-cell'+gridId).css("background-image","url(./images/hitmarker.png)");
 	    		boardSet.boardTurnP2.push(gridId);
+	    		boardSet.boardTurnP2.sort();
+	    		that.sinkCheck();
 
 	    		}
 			}	  
@@ -222,14 +226,36 @@ var GameManager = function(){
 
 	this.sinkCheck = function(){
 
-        if(shipArray.shipStateP1.smallShipP2 == boardSet.boardTurnP1){
+		var sinkBoard = "boardSet.boardTurn"+boardSet.currentPlayer;
 
-        	$('.sunken-ship').text("You flushed the small ship!!")
-        	$('#ship-sink').modal('show');
+		if (boardSet.currentPlayer == "P1") {
+			var nextPlayer = "P2";
+		}else if (boardSet.currentPlayer == "P2") {
+			var nextPlayer = "P1";
+		};
+		
+		var sinkShip = "shipArray.shipState"+nextPlayer+".smallShip"+nextPlayer;
+		console.log(sinkShip);
 
-        } else {
+		for (var i = 0; i<sinkBoard.length; i++) {
 
-        }
+			for (var j = 0; j < sinkShip.length; j++) {
+
+				if(sinkBoard[i] == sinkShip[j]) {
+					sinkShip[j] = "X";
+					console.log(sinkShip);
+				}
+			}
+
+	        // if(shipArray.shipStateP1.smallShipP1 == boardSet.boardTurnP1){
+
+	        // 	$('.sunken-ship').text("You flushed the small ship!!")
+	        // 	$('#ship-sink').modal('show');
+
+	        // } else {
+
+        	// }
+        };
 	};
 
 	this.victoryCheck = function(){
