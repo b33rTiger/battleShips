@@ -47,7 +47,7 @@ var GameManager = function(){
 		// 	    $(this).find('form')[0].reset();
 		// 	});
 		// });
-	}
+	};
 
 	this.newGame = function(){
 
@@ -175,7 +175,6 @@ var GameManager = function(){
 	    		$('#player-hit').modal('show');
 	    		$('#hmp1-cell'+gridId).css("background-image","url(./images/hitmarker.png)");
 	    		boardSet.boardTurnP1.push(gridId);
-	    	}
 	    		for (var i = 0; i < boardSet.boardTurnP1.length; i++) {
 	    			if (shipArray.shipStateP2.smallShipP2.shipPosition[i] == boardSet.boardTurnP1[i]) {
 	    				shipArray.shipStateP2.smallShipP2.shipHit.push('X');
@@ -185,7 +184,7 @@ var GameManager = function(){
 	    				shipArray.shipStateP2.bigShipP2.shipHit.push('X');
 	    				that.sinkCheck(shipArray.shipStateP2.bigShipP2.shipHit);
 	    			};
-	    		// boardSet.boardTurnP1.sort();
+	    		}
 	    	}
 
 	    } else if (boardSet.currentPlayer == "P2"){
@@ -211,8 +210,6 @@ var GameManager = function(){
 	    				shipArray.shipStateP1.bigShipP1.shipHit.push('X');
 	    				that.sinkCheck(shipArray.shipStateP1.smallShipP1.shipHit);
 	    			};
-	    		// boardSet.boardTurnP2.sort();
-	    		// that.sinkCheck(boardSet.currentPlayer);
 	    		}
 			}	  
 		}
@@ -278,20 +275,12 @@ var GameManager = function(){
 			sinkBigShipConfirm = shipArray.shipStateP1.bigShipP1.shipSunk;
 		};
 
-
-		// for(i = 0; i < sinkShipSmallPos.length; i++){
-
 		if(sinkShipSmall.length === sinkShipSmallPos.length){
 			$('.sunken-ship').text("You flushed the small ship!!")
 			$('#player-hit').modal('hide');
 			$('#ship-sink').modal('show');
 			sinkSmallShipConfirm = true;						
         }
-		// }
-
-
-		// for(j = 0; j < sinkShipBigPos.length; j++){
-			// sinkShipBig.push('X');
 
 		if(sinkShipBig.length === sinkShipBigPos.length){
 			$('.sunken-ship').text("You flushed the big ship!!");
@@ -299,15 +288,12 @@ var GameManager = function(){
 			$('#ship-sink').modal('show');
 			sinkBigShipConfirm = true;        				
 		} 
-		// }
 
 		console.log(sinkShipBig+" sinkShipBig");
 		console.log(sinkShipBigPos+ " sinkShipBigPos");
 	};
 
 	this.victoryCheck = function(){
-
-
 
 	};
 };
