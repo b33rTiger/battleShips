@@ -53,13 +53,9 @@ var GameManager = function(){
 
 		$("#newgame-button").click(function (){
 
-			// e.preventDefault();
-			console.log("new game clicked.");
 			boardSet.boardP1 = new Array();
 			boardSet.boardTurnP1 = new Array();
-			// $("#ps-player1").modal('show');
 			$("#newgame-button").hide();
-			console.log("new game button hidden?");
 			$("#endturnplaceship-button").show();
 			$(".ship-box").show();
 
@@ -83,24 +79,21 @@ var GameManager = function(){
 
 
 	this.endTurnPlaceShip = function(){
-		console.log("end button clicked");
-		// if (shipCounter == 2){
-			if(boardSet.currentPlayer == 'P1'){
-				$("#ps-p1").hide();
-				$("#ps-p2").show();
-				$("#player2").modal('show');
-				$('.radio').prop('checked',false);
-				$(".ship-box").show();
-				boardSet.currentPlayer = 'P2'
-				shipCounter = 0;
-			} else {
-				boardSet.currentPlayer = 'P1';
-				$("#ps-p2").hide();
-				$("#hm-p1").show();
-				$("#hm-player1").modal('show');
-				$("#endturnplaceship-button").hide();
-			}
-		// };
+		if(boardSet.currentPlayer == 'P1'){
+			$("#ps-p1").hide();
+			$("#ps-p2").show();
+			$("#player2").modal('show');
+			$('.radio').prop('checked',false);
+			$(".ship-box").show();
+			boardSet.currentPlayer = 'P2'
+			shipCounter = 0;
+		} else {
+			boardSet.currentPlayer = 'P1';
+			$("#ps-p2").hide();
+			$("#hm-p1").show();
+			$("#hm-player1").modal('show');
+			$("#endturnplaceship-button").hide();
+		}
 	};
 
 	var that = this;
@@ -136,6 +129,10 @@ var GameManager = function(){
 
                     if(shipSize == 2){
                         shipArray.shipStateP1.smallShipP1.shipPosition.push(i);
+
+                       	// for(shipArray.shipStateP1.smallShipP1.shipPosition[i] == ){
+
+                        // }
                     }else if(shipSize ==4){
                         shipArray.shipStateP1.bigShipP1.shipPosition.push(i);
                     }
@@ -178,8 +175,17 @@ var GameManager = function(){
 	    		$('#player-hit').modal('show');
 	    		$('#hmp1-cell'+gridId).css("background-image","url(./images/hitmarker.png)");
 	    		boardSet.boardTurnP1.push(gridId);
-	    		boardSet.boardTurnP1.sort();
-	    		that.sinkCheck();
+	    	}
+	    		for (var i = 0; i < boardSet.boardTurnP1.length; i++) {
+	    			if (shipArray.shipStateP2.smallShipP2.shipPosition[i] == boardSet.boardTurnP1[i]) {
+	    				shipArray.shipStateP2.smallShipP2.shipHit.push('X');
+			    		that.sinkCheck(shipArray.shipStateP2.smallShipP2.shipHit);
+
+	    			}else if (shipArray.shipStateP2.bigShipP2.shipPosition[i] == boardSet.boardTurnP1[i]) {
+	    				shipArray.shipStateP2.bigShipP2.shipHit.push('X');
+	    				that.sinkCheck(shipArray.shipStateP2.bigShipP2.shipHit);
+	    			};
+	    		// boardSet.boardTurnP1.sort();
 	    	}
 
 	    } else if (boardSet.currentPlayer == "P2"){
@@ -196,11 +202,21 @@ var GameManager = function(){
 	    		$('#player-hit').modal('show');
 	    		$('#hmp2-cell'+gridId).css("background-image","url(./images/hitmarker.png)");
 	    		boardSet.boardTurnP2.push(gridId);
-	    		boardSet.boardTurnP2.sort();
-	    		that.sinkCheck();
-	    	}
-		}	  
-	}
+	    		for (var i = 0; i < boardSet.boardTurnP2.length; i++) {
+	    			if (shipArray.shipStateP1.smallShipP1.shipPosition[i] == boardSet.boardTurnP2[i]) {
+	    				shipArray.shipStateP1.smallShipP1.shipHit.push('X');
+	    				that.sinkCheck(shipArray.shipStateP1.smallShipP1.shipHit);
+
+	    			}else if (shipArray.shipStateP1.bigShipP1.shipPosition[i] == boardSet.boardTurnP2[i]) {
+	    				shipArray.shipStateP1.bigShipP1.shipHit.push('X');
+	    				that.sinkCheck(shipArray.shipStateP1.smallShipP1.shipHit);
+	    			};
+	    		// boardSet.boardTurnP2.sort();
+	    		// that.sinkCheck(boardSet.currentPlayer);
+	    		}
+			}	  
+		}
+	};
 
 	this.endTurnMiss = function(){
 
@@ -239,7 +255,7 @@ var GameManager = function(){
 	var sinkShipSmallPos = [];
 	var sinkShipBigPos = [];
 
-	this.sinkCheck = function(){
+	this.sinkCheck = function(hitShip){
 		
 		if (boardSet.currentPlayer == "P1") {
 			var nextPlayer = "P2";
@@ -262,40 +278,36 @@ var GameManager = function(){
 			sinkBigShipConfirm = shipArray.shipStateP1.bigShipP1.shipSunk;
 		};
 
-		for (var i = 0; i<sinkBoard.length; i++) {
 
-			for (var j = 0; j < sinkShipSmallPos.length; j++) {
+		// for(i = 0; i < sinkShipSmallPos.length; i++){
 
-				if(sinkShipSmallPos[j]==sinkBoard[i]) {
-					sinkShipSmall.push('X');
-
-					if(sinkShipSmall.length === sinkShipSmallPos.length){
-						$('.sunken-ship').text("You flushed the small ship!!")
-						$('#ship-sink').modal('show');
-						sinkSmallShipConfirm = true;						
-					} 
-				}
-			}
-        };
-
-        for (var i = 0; i<sinkBoard.length; i++){
-        	console.log("at marking hits");
-        	for (var j = 0; j < sinkShipBig.length; j++) {
-
-        		if(sinkShipBig[j]==sinkBoard[i]) {
-        			sinkShipBig.push('X');
-
-        			if(sinkShipBig.length === sinkShipBigPos.length){
-        				$('.sunken-ship').text("You flushed the big ship!!")
-        				$('#ship-sink').modal('show');
-        				sinkBigShipConfirm = true;        				
-        			} 
-        		}
-        	}
+		if(sinkShipSmall.length === sinkShipSmallPos.length){
+			$('.sunken-ship').text("You flushed the small ship!!")
+			$('#player-hit').modal('hide');
+			$('#ship-sink').modal('show');
+			sinkSmallShipConfirm = true;						
         }
+		// }
+
+
+		// for(j = 0; j < sinkShipBigPos.length; j++){
+			// sinkShipBig.push('X');
+
+		if(sinkShipBig.length === sinkShipBigPos.length){
+			$('.sunken-ship').text("You flushed the big ship!!");
+			$('#player-hit').modal('hide');
+			$('#ship-sink').modal('show');
+			sinkBigShipConfirm = true;        				
+		} 
+		// }
+
+		console.log(sinkShipBig+" sinkShipBig");
+		console.log(sinkShipBigPos+ " sinkShipBigPos");
 	};
 
 	this.victoryCheck = function(){
+
+
 
 	};
 };
